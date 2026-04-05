@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /*.map
+Crawl-delay: 2
+
+Sitemap: https://techtronixsolutions.com/sitemap.xml
