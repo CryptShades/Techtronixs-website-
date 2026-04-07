@@ -1,6 +1,83 @@
-User-agent: *
+# ══════════════════════════════════════════════════════════════
+# Techtronix Solutions — robots.txt
+# https://techtronixsolutions.com
+#
+# Architecture note: React SPA (client-side rendered via Vite).
+# Crawlers MUST be able to fetch /assets/ JavaScript bundles in
+# order to render page content and structured data. Blocking
+# /assets/ would result in empty page indexing.
+# ══════════════════════════════════════════════════════════════
+
+
+# ── Google Search ──────────────────────────────────────────────
+# Googlebot respects Allow/Disallow but ignores Crawl-delay.
+# Crawl budget is managed via Google Search Console instead.
+User-agent: Googlebot
 Allow: /
+Allow: /assets/
+Disallow: /*.map
+
+
+# ── Google Image Bot ───────────────────────────────────────────
+User-agent: Googlebot-Image
+Allow: /
+Allow: /assets/
+
+
+# ── Bing / Microsoft ───────────────────────────────────────────
+User-agent: Bingbot
+Allow: /
+Allow: /assets/
 Disallow: /*.map
 Crawl-delay: 2
 
+User-agent: msnbot
+Allow: /
+Disallow: /*.map
+Crawl-delay: 5
+
+
+# ── DuckDuckGo ─────────────────────────────────────────────────
+User-agent: DuckDuckBot
+Allow: /
+Allow: /assets/
+Disallow: /*.map
+Crawl-delay: 2
+
+
+# ── Yandex ─────────────────────────────────────────────────────
+User-agent: YandexBot
+Allow: /
+Allow: /assets/
+Disallow: /*.map
+Crawl-delay: 5
+
+
+# ── SEO audit tools (read-only crawlers) ───────────────────────
+User-agent: AhrefsBot
+Allow: /
+Disallow: /*.map
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Allow: /
+Disallow: /*.map
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+
+# ── All other crawlers ─────────────────────────────────────────
+User-agent: *
+Allow: /
+Allow: /assets/
+Disallow: /*.map
+Crawl-delay: 5
+
+
+# ── Sitemap ────────────────────────────────────────────────────
 Sitemap: https://techtronixsolutions.com/sitemap.xml

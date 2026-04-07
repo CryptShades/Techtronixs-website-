@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Moon, Sun, Server } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import CertificationBadge from "@/components/CertificationBadge";
 
 const navLinks = [
   { to: "/",         label: "Home"     },
@@ -142,6 +143,54 @@ const Navbar = () => {
           </Button>
         </div>
       </div>
+
+      {/* ── Certification Trust Strip ─────────────────── */}
+      <motion.div
+        animate={{
+          height:  scrolled ? 0   : "auto",
+          opacity: scrolled ? 0   : 1,
+        }}
+        transition={{ duration: 0.38, ease: [0.25, 0.4, 0.25, 1] }}
+        style={{ overflow: "hidden" }}
+        aria-label="Certifications"
+      >
+        <div className="border-t border-border/30 bg-background/80 backdrop-blur-sm dark:bg-background/60">
+          <div className="container mx-auto px-4 h-9 flex items-center justify-center gap-3">
+            {/* Micro label */}
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 1.1 }}
+              className="hidden md:block text-[9.5px] font-semibold uppercase tracking-[0.2em] text-muted-foreground/50 select-none"
+            >
+              Trusted &amp; Certified
+            </motion.span>
+
+            {/* Divider */}
+            <div className="hidden md:block w-px h-3.5 bg-border/40" />
+
+            {/* Badges */}
+            <CertificationBadge
+              variant="quality"
+              label="ISO 9001:2015 Certified"
+              shortLabel="ISO 9001"
+              tooltip="Quality Management System — certified to ISO 9001:2015 standards"
+              delay={0.9}
+            />
+
+            {/* Separator dot */}
+            <span className="w-1 h-1 rounded-full bg-border/60 flex-shrink-0" aria-hidden="true" />
+
+            <CertificationBadge
+              variant="security"
+              label="ISO/IEC 27001:2022 Certified"
+              shortLabel="ISO 27001"
+              tooltip="Information Security Management — certified to ISO/IEC 27001:2022 standards"
+              delay={1.0}
+            />
+          </div>
+        </div>
+      </motion.div>
 
       {/* Mobile drawer */}
       <AnimatePresence>

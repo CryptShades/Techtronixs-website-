@@ -25,6 +25,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Techtronix Solutions IT Services",
+  "url": "https://techtronixsolutions.com/services",
   "description": "End-to-end IT services by Techtronix Solutions — cloud, cybersecurity, hybrid IT, data center, and 24×7 managed IT support across PAN India.",
   "itemListElement": servicesData.map((s, i) => ({
     "@type": "ListItem",

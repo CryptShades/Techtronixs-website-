@@ -25,6 +25,7 @@ const productSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Techtronix Solutions Enterprise IT Products",
+  "url": "https://techtronixsolutions.com/products",
   "description": "Enterprise IT hardware products by Techtronix Solutions — servers, storage systems, backup appliances, and networking devices from leading OEMs.",
   "itemListElement": products.map((p, i) => ({
     "@type": "ListItem",
@@ -34,8 +35,18 @@ const productSchema = {
       "name": p.title,
       "description": p.description,
       "category": p.category,
-      "brand": { "@type": "Brand", "name": p.title.split(" ")[0] },
-      "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "Techtronix Solutions" } },
+      "brand": { "@type": "Brand", "name": p.brand },
+      ...(p.image ? { "image": p.image } : {}),
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "INR",
+        "seller": {
+          "@type": "Organization",
+          "@id": "https://techtronixsolutions.com/#organization",
+          "name": "Techtronix Solutions",
+        },
+      },
     },
   })),
 };

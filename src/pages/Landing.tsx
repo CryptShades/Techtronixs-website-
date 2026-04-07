@@ -5,6 +5,7 @@ import {
   Shield, Cloud, TrendingUp, Users, Award,
   Star, CheckCircle2, BookOpen, Calendar, Brain, ChevronDown,
 } from "lucide-react";
+import CertificationBadge from "@/components/CertificationBadge";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -163,33 +164,36 @@ const faqSchema = {
 
 const aggregateRatingSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://techtronixsolutions.com/#organization",
+  "@type": "LocalBusiness",
+  "@id": "https://techtronixsolutions.com/#business",
   "name": "Techtronix Solutions",
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "5",
-    "reviewCount": "3",
-    "bestRating": "5",
-    "worstRating": "1",
+    "ratingValue": 5,
+    "reviewCount": 3,
+    "bestRating": 5,
+    "worstRating": 1,
   },
   "review": [
     {
       "@type": "Review",
       "author": { "@type": "Person", "name": "Rajesh Sharma" },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "datePublished": "2025-01-15",
+      "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
       "reviewBody": "Techtronix transformed our on-premise chaos into a structured hybrid environment. Our system downtime dropped to near zero within three months of engagement. Exceptional team.",
     },
     {
       "@type": "Review",
       "author": { "@type": "Person", "name": "Priya Mehta" },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "datePublished": "2025-02-10",
+      "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
       "reviewBody": "Their cybersecurity team identified 14 critical vulnerabilities our previous vendor had missed. The remediation was fast and thorough — our compliance audit passed without a single finding.",
     },
     {
       "@type": "Review",
       "author": { "@type": "Person", "name": "Arjun Kapoor" },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "datePublished": "2025-03-05",
+      "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
       "reviewBody": "We migrated 300+ users and 40TB of data to the cloud in under six weeks with zero data loss. The Techtronix team managed every detail, from planning to post-go-live support.",
     },
   ],
@@ -306,6 +310,31 @@ const Landing = () => {
                     <span className="hidden sm:inline text-xs">{label}</span>
                   </div>
                 ))}
+              </motion.div>
+
+              {/* ── ISO Certification Badges ─────────────── */}
+              <motion.div
+                variants={fadeUp}
+                className="mt-5 flex items-center gap-2.5 flex-wrap"
+              >
+                <span className="text-[9.5px] font-bold uppercase tracking-[0.18em] text-muted-foreground/50 select-none mr-0.5">
+                  Certified
+                </span>
+                <div className="w-px h-3.5 bg-border/50 flex-shrink-0" />
+                <CertificationBadge
+                  variant="quality"
+                  label="ISO 9001:2015 Certified"
+                  shortLabel="ISO 9001"
+                  tooltip="Quality Management System — certified to ISO 9001:2015 standards"
+                  delay={0.55}
+                />
+                <CertificationBadge
+                  variant="security"
+                  label="ISO/IEC 27001:2022 Certified"
+                  shortLabel="ISO 27001"
+                  tooltip="Information Security Management — certified to ISO/IEC 27001:2022 standards"
+                  delay={0.65}
+                />
               </motion.div>
             </motion.div>
 

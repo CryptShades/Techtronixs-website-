@@ -2,6 +2,7 @@
   {
     "id": "1",
     "title": "HPE ProLiant Gen11 Servers",
+    "brand": "HPE",
     "description": "Industry-leading rack and tower servers engineered for performance, reliability, and intelligent automation — ideal for modern enterprise workloads.",
     "image": "",
     "tags": ["HPE", "Servers"],
@@ -11,6 +12,7 @@
   {
     "id": "2",
     "title": "Dell PowerEdge Rack Servers",
+    "brand": "Dell",
     "description": "Scalable rack servers delivering exceptional compute density and efficiency for data centres of all sizes, with integrated lifecycle management.",
     "image": "",
     "tags": ["Dell", "Servers"],
@@ -20,6 +22,7 @@
   {
     "id": "3",
     "title": "NetApp AFF All-Flash Storage",
+    "brand": "NetApp",
     "description": "High-performance all-flash storage arrays delivering ultra-low latency and enterprise reliability for mission-critical databases and applications.",
     "image": "",
     "tags": ["NetApp", "Flash"],
@@ -29,6 +32,7 @@
   {
     "id": "4",
     "title": "Dell EMC PowerStore",
+    "brand": "Dell EMC",
     "description": "Intelligent, adaptable storage platform with built-in machine learning for predictive analytics, seamless scalability, and simplified management.",
     "image": "",
     "tags": ["Dell EMC", "Storage"],
@@ -38,6 +42,7 @@
   {
     "id": "5",
     "title": "Veritas NetBackup",
+    "brand": "Veritas",
     "description": "Enterprise-class backup and recovery solution protecting physical, virtual, and cloud workloads with automated policy management and deduplication.",
     "image": "",
     "tags": ["Veritas", "Backup"],
@@ -47,6 +52,7 @@
   {
     "id": "6",
     "title": "HPE StoreEver Tape Library",
+    "brand": "HPE",
     "description": "Cost-effective, high-capacity tape archiving and long-term data retention solution with LTO technology and intelligent media management.",
     "image": "",
     "tags": ["HPE", "Tape"],
@@ -56,6 +62,7 @@
   {
     "id": "7",
     "title": "Cisco Catalyst Switches",
+    "brand": "Cisco",
     "description": "Enterprise-grade switching infrastructure offering high availability, advanced security features, and simplified network operations for campus and branch environments.",
     "image": "",
     "tags": ["Cisco", "Networking"],
@@ -65,6 +72,7 @@
   {
     "id": "8",
     "title": "Juniper EX Series Switches",
+    "brand": "Juniper",
     "description": "High-performance Ethernet switches for modern enterprise networks featuring zero-touch provisioning, advanced security, and AI-driven operations.",
     "image": "",
     "tags": ["Juniper", "Networking"],
