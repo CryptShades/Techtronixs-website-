@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Rajesh Sharma",
+    "role": "IT Director",
+    "company": "Nexus Manufacturing Ltd.",
+    "quote": "Techtronix transformed our on-premise chaos into a structured hybrid environment. Our system downtime dropped to near zero within three months of engagement. Exceptional team.",
+    "metric": "99.9% uptime achieved",
+    "stars": 5,
+    "datePublished": "2025-01-15"
+  },
+  {
+    "name": "Priya Mehta",
+    "role": "CTO",
+    "company": "FinBridge Financial Services",
+    "quote": "Their cybersecurity team identified 14 critical vulnerabilities our previous vendor had missed. The remediation was fast and thorough — our compliance audit passed without a single finding.",
+    "metric": "14 vulnerabilities resolved",
+    "stars": 5,
+    "datePublished": "2025-02-10"
+  },
+  {
+    "name": "Arjun Kapoor",
+    "role": "VP – Infrastructure",
+    "company": "LogiPath Supply Chain",
+    "quote": "We migrated 300+ users and 40TB of data to the cloud in under six weeks with zero data loss. The Techtronix team managed every detail, from planning to post-go-live support.",
+    "metric": "40TB migrated, 0 data loss",
+    "stars": 5,
+    "datePublished": "2025-03-05"
+  }
+]

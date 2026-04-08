@@ -11,7 +11,9 @@ import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import MainLayout from "@/layouts/MainLayout";
 import PageMeta from "@/components/PageMeta";
+import FAQAccordion from "@/components/shared/FAQAccordion";
 import servicesData from "@/data/services.json";
+import faqsData from "@/data/faqs.json";
 
 const processSteps = [
   { step: "01", icon: Search, title: "Discovery",  desc: "We deep-dive into your business, existing systems, and technical constraints to understand the full landscape — no assumptions." },
@@ -20,7 +22,7 @@ const processSteps = [
   { step: "04", icon: Rocket, title: "Delivery",   desc: "We launch into production with you. Post-launch, we monitor performance and remain on-call for the critical first 30 days." },
 ];
 
-// Schema.org Service JSON-LD
+/* ── Schema ───────────────────────────────────────────── */
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -43,56 +45,69 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techtronixsolutions.com/" },
+    { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://techtronixsolutions.com/" },
     { "@type": "ListItem", "position": 2, "name": "IT Services", "item": "https://techtronixsolutions.com/services" },
   ],
 };
 
-const serviceFaqs = [
-  {
-    q: "What IT services does Techtronix Solutions provide?",
-    a: "Techtronix Solutions provides end-to-end IT services including Digital Workplace Solutions, Cloud Solutions, Cybersecurity, Hybrid IT Infrastructure, Data Center Services, and 24×7 Managed IT Services — covering the full IT lifecycle for enterprises across PAN India.",
-  },
-  {
-    q: "Does Techtronix offer 24×7 IT support across India?",
-    a: "Yes. Techtronix operates a 24×7 Managed IT Service Desk with PAN India coverage, providing always-on incident response, proactive monitoring, and SLA-backed support for enterprises in Delhi, Mumbai, Bengaluru, Hyderabad, Chennai, and beyond.",
-  },
-  {
-    q: "What industries does Techtronix serve?",
-    a: "Techtronix serves manufacturing, financial services (BFSI), logistics, healthcare, and professional services — delivering IT infrastructure and managed services tailored to each sector's compliance and operational requirements.",
-  },
-  {
-    q: "How does Techtronix's managed IT service model work?",
-    a: "Our managed IT service begins with a full IT assessment of your current environment. We design a support model — co-managed or fully outsourced — with defined SLAs, dedicated technical resources, proactive monitoring, and a single point of accountability for all IT operations.",
-  },
-  {
-    q: "Can Techtronix manage both on-premise and cloud environments?",
-    a: "Yes. Techtronix specialises in hybrid IT environments — managing on-premise servers, private clouds, and public cloud workloads (AWS, Azure, GCP) as a unified managed service with consistent governance and reporting.",
-  },
-  {
-    q: "How do I get started with Techtronix IT services?",
-    a: "Contact our team via the enquiry form or call +91-9315692845. We begin every engagement with a complimentary IT discovery session to understand your current challenges and environment before proposing any solution.",
-  },
-];
-
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": serviceFaqs.map(f => ({
+  "mainEntity": faqsData.services.map(f => ({
     "@type": "Question",
     "name": f.q,
     "acceptedAnswer": { "@type": "Answer", "text": f.a },
   })),
 };
 
-const gridStagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.09 } },
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How Techtronix Delivers IT Services in India",
+  "description": "Techtronix Solutions follows a structured 4-step delivery process for all IT services — from Discovery through Strategy, Execution, and final Delivery with post-launch support.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Discovery",
+      "text": "We deep-dive into your business, existing systems, and technical constraints to understand the full landscape — no assumptions.",
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Strategy",
+      "text": "We design a tailored delivery roadmap with clear milestones, tech choices justified in plain English, and honest timeline estimates.",
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Execution",
+      "text": "Our engineers work in weekly sprints with daily standups. You see working results every cycle — never a 6-week black box.",
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Delivery",
+      "text": "We launch into production with you. Post-launch, we monitor performance and remain on-call for the critical first 30 days.",
+    },
+  ],
 };
-const gridItem = {
-  hidden: { opacity: 0, y: 24 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.25, 0.4, 0.25, 1] as [number,number,number,number] } },
+
+const speakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "IT Services in India — Cloud, Cybersecurity & Managed IT | Techtronix Solutions",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".speakable"],
+  },
+  "url": "https://techtronixsolutions.com/services",
 };
+
+/* ── Animations ───────────────────────────────────────── */
+const ease = [0.25, 0.4, 0.25, 1] as [number, number, number, number];
+const gridStagger = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } };
+const gridItem = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.45, ease } } };
 
 const Services = () => {
   const [expanded, setExpanded] = useState<string | null>(null);
@@ -100,16 +115,18 @@ const Services = () => {
   return (
     <MainLayout>
       <PageMeta
-        title="IT Services — Cloud, Cybersecurity & Managed IT Services | Techtronix"
-        description="Comprehensive IT services including cloud solutions, cybersecurity, hybrid IT infrastructure, data center services, and 24×7 managed IT support across PAN India."
+        title="IT Services in India — Cloud, Cybersecurity & Managed IT | Techtronix Solutions"
+        description="Comprehensive IT services for Indian enterprises — cloud solutions, cybersecurity, hybrid IT infrastructure, data center services, and 24×7 managed IT support across PAN India."
         canonical="/services"
         ogImage="https://techtronixsolutions.com/og-services.png"
-        keywords="managed IT services India, cloud solutions Delhi, cybersecurity services India, hybrid IT infrastructure, data center services, IT support PAN India"
+        keywords="managed IT services India, cloud solutions Delhi, cybersecurity services India, hybrid IT infrastructure Delhi NCR, data center services New Delhi, IT support PAN India"
       />
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
 
       {/* ── Hero ──────────────────────────────────────── */}
       <section className="relative py-28 md:py-40 overflow-hidden">
@@ -133,15 +150,16 @@ const Services = () => {
             transition={{ duration: 0.65, delay: 0.1 }}
             className="text-5xl md:text-7xl font-display font-bold tracking-tight text-foreground mb-6"
           >
-            IT <span className="gradient-text">Services</span>
+            Enterprise IT Services{" "}
+            <span className="gradient-text">in India</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed speakable"
           >
-            Techtronix Solutions delivers end-to-end IT services — cloud, cybersecurity, hybrid IT infrastructure, data center, and 24×7 managed support — for enterprises across PAN India, from a single accountable team.
+            Techtronix Solutions is a New Delhi-based IT services company delivering end-to-end cloud, cybersecurity, hybrid IT infrastructure, data center, and 24×7 managed IT support — for enterprises across PAN India, from a single accountable team.
           </motion.p>
         </div>
       </section>
@@ -201,7 +219,7 @@ const Services = () => {
                     </div>
                     <motion.div
                       animate={{ rotate: expanded === s.id ? 180 : 0 }}
-                      transition={{ duration: 0.28, ease: [0.25, 0.4, 0.25, 1] }}
+                      transition={{ duration: 0.28, ease }}
                       className="flex-shrink-0 ml-4"
                     >
                       <ChevronDown className="h-5 w-5 text-muted-foreground" />
@@ -214,12 +232,12 @@ const Services = () => {
                         key="content"
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
-                        exit={{   height: 0,    opacity: 0 }}
-                        transition={{ duration: 0.32, ease: [0.25, 0.4, 0.25, 1] }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.32, ease }}
                         className="overflow-hidden"
                       >
                         <div className="px-6 pb-6 border-t border-border/60 pt-5">
-                          <p className="text-muted-foreground text-sm mb-6 leading-relaxed">{s.description}</p>
+                          <p className="text-muted-foreground text-sm mb-6 leading-relaxed speakable">{s.description}</p>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                               <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
@@ -263,7 +281,7 @@ const Services = () => {
         </div>
       </section>
 
-      {/* ── Process ───────────────────────────────────── */}
+      {/* ── Process / HowTo ───────────────────────────── */}
       <section className="py-28 md:py-36">
         <div className="container mx-auto px-4">
           <SectionHeading
@@ -275,7 +293,6 @@ const Services = () => {
             {processSteps.map((s, i) => (
               <AnimatedSection key={s.step} delay={i * 0.1}>
                 <div className="relative text-center group">
-                  {/* Connector line between steps (desktop) */}
                   {i < processSteps.length - 1 && (
                     <div className="hidden lg:block absolute top-9 left-[calc(50%+32px)] right-[calc(-50%+32px)] h-px bg-gradient-to-r from-border/80 to-transparent z-0" />
                   )}
@@ -312,45 +329,8 @@ const Services = () => {
             title="Frequently Asked Questions"
             subtitle="Quick answers about our IT services, support model, and how we work."
           />
-          <div className="max-w-3xl mx-auto space-y-3">
-            {serviceFaqs.map((faq, idx) => (
-              <AnimatedSection key={idx} delay={idx * 0.04}>
-                <div className="rounded-2xl border border-border bg-card card-elevated overflow-hidden hover:border-primary/30 transition-colors duration-300">
-                  <button
-                    onClick={() => setExpanded(expanded === `faq-${idx}` ? null : `faq-${idx}`)}
-                    className="w-full flex items-center justify-between p-6 text-left group focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset outline-none"
-                    aria-expanded={expanded === `faq-${idx}`}
-                  >
-                    <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors duration-200 pr-4 text-sm leading-relaxed">
-                      {faq.q}
-                    </h3>
-                    <motion.div
-                      animate={{ rotate: expanded === `faq-${idx}` ? 180 : 0 }}
-                      transition={{ duration: 0.28, ease: [0.25, 0.4, 0.25, 1] }}
-                      className="flex-shrink-0"
-                    >
-                      <ChevronDown className="h-5 w-5 text-muted-foreground" />
-                    </motion.div>
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {expanded === `faq-${idx}` && (
-                      <motion.div
-                        key="faq-content"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.32, ease: [0.25, 0.4, 0.25, 1] }}
-                        className="overflow-hidden"
-                      >
-                        <p className="px-6 pb-6 pt-1 text-sm text-muted-foreground leading-relaxed border-t border-border/60 pt-4">
-                          {faq.a}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </AnimatedSection>
-            ))}
+          <div className="max-w-3xl mx-auto">
+            <FAQAccordion faqs={faqsData.services} />
           </div>
         </div>
       </section>

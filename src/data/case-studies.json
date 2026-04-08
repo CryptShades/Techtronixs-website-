@@ -1,0 +1,23 @@
+[
+  {
+    "client": "Nexus Manufacturing",
+    "industry": "Manufacturing",
+    "result": "99.9% infrastructure uptime",
+    "detail": "Hybrid IT redesign consolidating 6 legacy servers into a high-availability virtualised cluster with automated failover.",
+    "color": "from-sky-400/15 to-primary/10"
+  },
+  {
+    "client": "FinBridge Financial",
+    "industry": "BFSI",
+    "result": "ISO 27001 compliance achieved",
+    "detail": "End-to-end cybersecurity overhaul — VAPT, SIEM deployment, and 24×7 SOC coverage for a 500-user financial services firm.",
+    "color": "from-violet-400/15 to-primary/10"
+  },
+  {
+    "client": "LogiPath Supply Chain",
+    "industry": "Logistics",
+    "result": "300 users migrated in 6 weeks",
+    "detail": "Full cloud migration to Microsoft Azure with zero downtime, modern collaboration stack, and managed support post-launch.",
+    "color": "from-emerald-400/15 to-primary/10"
+  }
+]

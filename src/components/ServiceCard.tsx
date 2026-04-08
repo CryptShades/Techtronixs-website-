@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { Code2, Cloud, Brain, Shield, Palette, Settings, LucideIcon, CheckCircle2 } from "lucide-react";
-
-const iconMap: Record<string, LucideIcon> = { Code2, Cloud, Brain, Shield, Palette, Settings };
+import { CheckCircle2 } from "lucide-react";
+import iconMap from "@/data/icon-map";
 
 interface ServiceCardProps {
   title: string;
@@ -11,7 +10,7 @@ interface ServiceCardProps {
 }
 
 const ServiceCard = ({ title, description, icon, features }: ServiceCardProps) => {
-  const Icon = iconMap[icon] ?? Code2;
+  const Icon = iconMap[icon] ?? iconMap["Code2"];
 
   return (
     <motion.div

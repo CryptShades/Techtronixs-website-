@@ -1,0 +1,8 @@
+[
+  { "name": "Cisco",     "style": "text-blue-600  dark:text-blue-400"    },
+  { "name": "Microsoft", "style": "text-sky-600   dark:text-sky-400"     },
+  { "name": "HPE",       "style": "text-green-600 dark:text-green-400"   },
+  { "name": "Dell",      "style": "text-foreground"                       },
+  { "name": "VMware",    "style": "text-orange-600 dark:text-orange-400" },
+  { "name": "NetApp",    "style": "text-blue-500  dark:text-blue-300"    }
+]

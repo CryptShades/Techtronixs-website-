@@ -1,0 +1,63 @@
+{
+  "timeline": [
+    {
+      "year": "Oct 2024",
+      "title": "Founded",
+      "desc": "Techtronix Solutions was established in New Delhi with a focused vision — to bring enterprise-grade IT consulting and managed services to organisations across India."
+    },
+    {
+      "year": "Nov 2024",
+      "title": "First Engagements",
+      "desc": "Secured our first enterprise clients in the manufacturing and financial services sectors, delivering cloud migration and cybersecurity assessment projects."
+    },
+    {
+      "year": "Q1 2025",
+      "title": "Service Expansion",
+      "desc": "Launched our 24×7 Managed IT Service Desk and Hybrid IT practice, expanding our service portfolio to cover the full IT lifecycle for mid-to-large enterprises."
+    },
+    {
+      "year": "Q2 2025",
+      "title": "PAN India Presence",
+      "desc": "Established sales and support presence across major metros including Delhi, Mumbai, Bengaluru, Hyderabad, and Chennai — enabling rapid on-site response nationwide."
+    },
+    {
+      "year": "2025",
+      "title": "Growing Portfolio",
+      "desc": "Delivering end-to-end IT projects spanning data centre builds, cloud migrations, cybersecurity overhauls, and ongoing managed services for a growing enterprise client base."
+    }
+  ],
+  "team": [
+    { "name": "Founder & CEO",        "role": "Strategic Vision & Leadership",  "color": "from-violet-400/30 to-primary/30"  },
+    { "name": "Head of Technology",   "role": "Architecture & Engineering",      "color": "from-sky-400/30   to-primary/30"   },
+    { "name": "Head of Operations",   "role": "Service Delivery & SLAs",        "color": "from-emerald-400/30 to-primary/30" },
+    { "name": "Head of Sales",        "role": "Client Partnerships & Growth",   "color": "from-rose-400/30  to-primary/30"   },
+    { "name": "Lead – Cybersecurity", "role": "Security Practice & Compliance", "color": "from-amber-400/30 to-primary/30"   },
+    { "name": "Lead – Cloud",         "role": "Cloud Architecture & Migration", "color": "from-primary/30   to-accent/30"    }
+  ],
+  "values": [
+    {
+      "icon": "Target",
+      "title": "Mission",
+      "text": "To deliver scalable, secure, and innovative IT solutions that enhance business efficiency and create long-term value for every organisation we serve."
+    },
+    {
+      "icon": "Eye",
+      "title": "Vision",
+      "text": "To become a trusted global leader in IT system integration — empowering organisations of every scale to thrive in a connected, digital-first world."
+    },
+    {
+      "icon": "Heart",
+      "title": "Our Motto",
+      "text": "\"Connecting Technology, Empowering Futures.\" — We measure our success not by the contracts we sign, but by the business outcomes our clients achieve."
+    }
+  ],
+  "successDNA": [
+    { "title": "Customer-Centric Approach",  "desc": "Every decision starts with your business outcome, not our service catalogue." },
+    { "title": "Innovation-Driven Thinking", "desc": "We bring modern solutions to complex problems — not yesterday's toolkits." },
+    { "title": "Integrity & Transparency",   "desc": "Honest timelines, honest pricing, and honest conversations when things change." },
+    { "title": "Excellence in Delivery",     "desc": "We set high standards and hold ourselves accountable to every SLA we sign." },
+    { "title": "Collaboration & Teamwork",   "desc": "We operate as an extension of your team, not as an external vendor." },
+    { "title": "Agility & Adaptability",     "desc": "Flexible engagement models that evolve as your IT needs change." },
+    { "title": "Sustainable Practices",      "desc": "We design IT systems with long-term efficiency, not just short-term gains." }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "hero": {
+    "badge": "PAN India IT Solutions & Support",
+    "headline": "Transforming Businesses with Smart IT Infrastructure",
+    "headlineHighlight": "Smart IT",
+    "subheadline": "We design, deploy, and manage scalable IT ecosystems that enhance performance, security, and business growth in a digital-first world.",
+    "ctaPrimary": "Get a Free Consultation",
+    "ctaSecondary": "Explore Our Solutions",
+    "trustBadges": [
+      { "icon": "Shield", "label": "Multi-Vendor Certified" },
+      { "icon": "Zap",    "label": "24×7 Service Desk"      },
+      { "icon": "Globe",  "label": "PAN India Support"       }
+    ]
+  },
+  "stats": [
+    {
+      "target": 50,
+      "suffix": "+",
+      "label": "Enterprise Clients",
+      "sublabel": "and growing across PAN India",
+      "icon": "Users"
+    },
+    {
+      "target": 99,
+      "suffix": "%",
+      "label": "SLA Adherence Rate",
+      "sublabel": "committed service levels",
+      "icon": "TrendingUp"
+    },
+    {
+      "target": 10,
+      "suffix": "+",
+      "label": "OEM Partnerships",
+      "sublabel": "multi-vendor certified expertise",
+      "icon": "Award"
+    },
+    {
+      "target": 24,
+      "suffix": "/7",
+      "label": "Support Desk Coverage",
+      "sublabel": "always-on incident response",
+      "icon": "Globe"
+    }
+  ],
+  "dashboard": {
+    "metrics": [
+      { "label": "Uptime SLA",       "val": "99.99%" },
+      { "label": "Tickets Resolved", "val": "1,240"  },
+      { "label": "Threat Blocks",    "val": "8,600"  }
+    ],
+    "activityLog": [
+      "Patch deployed to 240 endpoints — 0 failures",
+      "Firewall rules updated — threat surface reduced",
+      "Daily backup verified — all 14 jobs successful"
+    ],
+    "chartBars": [70, 82, 75, 90, 78, 95, 88, 92, 85, 96, 91, 98]
+  }
+}

@@ -99,16 +99,6 @@
     @apply bg-background text-foreground font-sans antialiased;
   }
 
-  /* Custom cursor — only on real pointer devices to preserve accessibility */
-  @media (pointer: fine) {
-    body {
-      cursor: none;
-    }
-    a, button, [role="button"], input, textarea, select, label[for] {
-      cursor: none;
-    }
-  }
-
   /* Focus rings — keyboard-only (focus-visible), consistent and accessible */
   :focus-visible {
     outline: 2px solid hsl(var(--primary));

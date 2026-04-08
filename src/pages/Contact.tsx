@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import {
   Mail, Phone, MapPin, Send, Github, Twitter, Linkedin,
   MessageSquare, Clock, ArrowRight, Calendar, ChevronDown,
 } from "lucide-react";
-import { AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,10 +13,28 @@ import { useToast } from "@/hooks/use-toast";
 import AnimatedSection from "@/components/AnimatedSection";
 import MainLayout from "@/layouts/MainLayout";
 import PageMeta from "@/components/PageMeta";
+import FAQAccordion from "@/components/shared/FAQAccordion";
+import faqsData from "@/data/faqs.json";
 
+/* ── Zod schema ───────────────────────────────────────── */
+const contactSchema = z.object({
+  name:      z.string().min(2, "Name must be at least 2 characters").max(100),
+  email:     z.string().email("Enter a valid email address").max(255),
+  phone:     z.string().min(7, "Enter a valid phone number").max(20).regex(/^[+\d\s\-()]+$/, "Invalid phone format"),
+  company:   z.string().max(100).optional(),
+  jobTitle:  z.string().max(100).optional(),
+  employees: z.string().optional(),
+  location:  z.string().max(100).optional(),
+  solution:  z.string().optional(),
+  message:   z.string().max(1000).optional(),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
+
+/* ── Static data ──────────────────────────────────────── */
 const contactInfo = [
-  { icon: Mail,   label: "Email Us",  value: "sales@techtronixsolutions.com",             sub: "Replies within 2 business hours"     },
-  { icon: Phone,  label: "Call Us",   value: "+91-9315692845 / +91-8860434566",            sub: "Mon–Sat, 9am–6pm IST"                },
+  { icon: Mail,   label: "Email Us",  value: "sales@techtronixsolutions.com",              sub: "Replies within 2 business hours"    },
+  { icon: Phone,  label: "Call Us",   value: "+91-9315692845 / +91-8860434566",             sub: "Mon–Sat, 9am–6pm IST"               },
   { icon: MapPin, label: "Visit Us",  value: "A-4, 1st Floor, Siddhatri Enclave, New Delhi", sub: "Jain Road, Uttam Nagar – 110059"  },
 ];
 
@@ -25,9 +44,7 @@ const socialLinks = [
   { Icon: Linkedin, label: "LinkedIn", href: "#" },
 ];
 
-const employeeOptions = [
-  "1–10", "11–50", "51–200", "201–500", "500+"
-];
+const employeeOptions = ["1–10", "11–50", "51–200", "201–500", "500+"];
 
 const solutionOptions = [
   "Digital Workplace Solutions",
@@ -42,85 +59,50 @@ const solutionOptions = [
   "Other / Not Sure",
 ];
 
-const faqs = [
-  {
-    q: "What are managed IT services?",
-    a: "Managed IT services means outsourcing the day-to-day management, monitoring, and support of your IT infrastructure to a specialist provider like Techtronix. Instead of reacting to problems after they occur, we proactively monitor your systems 24×7, apply patches, resolve incidents, and report on performance — all under a defined SLA."
-  },
-  {
-    q: "How can cloud solutions reduce IT costs?",
-    a: "Cloud eliminates large upfront capital expenditure on hardware and data centre facilities. You pay for what you use, scale up or down on demand, and reduce the cost of maintenance, power, and cooling. Our FinOps practice typically identifies 30–50% in cloud spend savings for organisations that have migrated without cost governance in place."
-  },
-  {
-    q: "Why is cybersecurity important for businesses?",
-    a: "A single data breach can cost an organisation millions in remediation, regulatory fines, and reputational damage. Cyber threats — ransomware, phishing, insider attacks — are increasingly targeting mid-sized Indian businesses that lack dedicated security teams. A structured cybersecurity programme is no longer optional; it's a board-level business continuity requirement."
-  },
-  {
-    q: "What is hybrid IT infrastructure?",
-    a: "Hybrid IT combines on-premise infrastructure with private and public cloud environments, connected through secure networking. It allows organisations to keep sensitive workloads on-premise for compliance reasons while leveraging cloud elasticity for everything else — giving you the best of both worlds without a disruptive full cloud migration."
-  },
-  {
-    q: "How quickly can Techtronix start on a new project?",
-    a: "Most projects begin within 1–2 weeks of contract signing. For urgent requirements — such as post-incident response or time-critical migrations — we can mobilise within 72 hours. Just mention your timeline in the contact form and we'll prioritise accordingly."
-  },
-  {
-    q: "Do you provide services outside Delhi?",
-    a: "Yes. Techtronix has a PAN India support and sales presence covering major metros including Mumbai, Bengaluru, Hyderabad, Chennai, and Pune. For on-site requirements in other cities, we coordinate through our certified partner network to ensure the same service quality."
-  },
-  {
-    q: "What OEM brands do you work with?",
-    a: "We are multi-vendor certified and work with leading OEMs including Cisco, Microsoft, HPE, Dell, VMware, NetApp, Juniper, and Veritas. Our vendor-agnostic approach means we recommend the right technology for your specific requirements — not the product that earns us the highest margin."
-  },
-  {
-    q: "What is your pricing model?",
-    a: "We offer three engagement models: fixed-price for well-scoped projects, time & materials for evolving requirements, and monthly retainers for managed services. We present a clear, itemised proposal after an initial discovery call — no surprise charges, no vague estimates."
-  },
-  {
-    q: "Is our data and IP protected when working with Techtronix?",
-    a: "Absolutely. All engagements begin with a signed NDA. Any IP, configurations, or documentation created during the project are fully owned by you. Our engineers operate under strict confidentiality agreements and follow ISO 27001-aligned data handling practices."
-  },
-];
-
+/* ── Schema ───────────────────────────────────────────── */
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techtronixsolutions.com/" },
+    { "@type": "ListItem", "position": 1, "name": "Home",    "item": "https://techtronixsolutions.com/" },
     { "@type": "ListItem", "position": 2, "name": "Contact Techtronix Solutions", "item": "https://techtronixsolutions.com/contact" },
   ],
 };
 
-// Schema.org FAQPage JSON-LD
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": faqs.map(f => ({
+  "mainEntity": faqsData.contact.map(f => ({
     "@type": "Question",
     "name": f.q,
     "acceptedAnswer": { "@type": "Answer", "text": f.a },
   })),
 };
 
+/* ── FieldError helper ────────────────────────────────── */
+const FieldError = ({ message }: { message?: string }) =>
+  message ? <p className="text-xs text-destructive mt-1">{message}</p> : null;
+
+/* ── Page ─────────────────────────────────────────────── */
 const Contact = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({
-    name: "", email: "", phone: "", company: "",
-    jobTitle: "", employees: "", location: "", solution: "", message: "",
-  });
-  const [loading, setLoading] = useState(false);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || !form.phone.trim()) {
-      toast({ title: "Missing fields", description: "Please fill in name, email, and phone.", variant: "destructive" });
-      return;
-    }
-    setLoading(true);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+  });
+
+  const messageLen = watch("message")?.length ?? 0;
+
+  const onSubmit = async (_data: ContactFormData) => {
     await new Promise(r => setTimeout(r, 900));
-    setLoading(false);
     toast({ title: "Message received!", description: "Our team will reach out within 2 business hours." });
-    setForm({ name: "", email: "", phone: "", company: "", jobTitle: "", employees: "", location: "", solution: "", message: "" });
+    reset();
   };
 
   return (
@@ -198,7 +180,7 @@ const Contact = () => {
 
             {/* Form */}
             <AnimatedSection className="lg:col-span-3">
-              <form onSubmit={handleSubmit} className="rounded-2xl border border-border bg-card card-elevated p-8 space-y-5">
+              <form onSubmit={handleSubmit(onSubmit)} noValidate className="rounded-2xl border border-border bg-card card-elevated p-8 space-y-5">
                 <div>
                   <h2 className="text-xl font-display font-bold text-foreground mb-1">Send us your requirement</h2>
                   <p className="text-sm text-muted-foreground">The more detail you share, the faster we can respond with the right solution.</p>
@@ -211,25 +193,23 @@ const Contact = () => {
                       Full Name <span className="text-primary">*</span>
                     </label>
                     <Input
-                      value={form.name}
-                      onChange={e => setForm({ ...form, name: e.target.value })}
+                      {...register("name")}
                       placeholder="Your full name"
                       className="rounded-xl h-11 transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30"
-                      maxLength={100}
                     />
+                    <FieldError message={errors.name?.message} />
                   </div>
                   <div>
                     <label className="text-xs font-semibold text-foreground mb-1.5 block uppercase tracking-wide">
                       Email <span className="text-primary">*</span>
                     </label>
                     <Input
+                      {...register("email")}
                       type="email"
-                      value={form.email}
-                      onChange={e => setForm({ ...form, email: e.target.value })}
                       placeholder="you@company.com"
                       className="rounded-xl h-11 transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30"
-                      maxLength={255}
                     />
+                    <FieldError message={errors.email?.message} />
                   </div>
                 </div>
 
@@ -240,22 +220,19 @@ const Contact = () => {
                       Phone Number <span className="text-primary">*</span>
                     </label>
                     <Input
+                      {...register("phone")}
                       type="tel"
-                      value={form.phone}
-                      onChange={e => setForm({ ...form, phone: e.target.value })}
                       placeholder="+91 XXXXX XXXXX"
                       className="rounded-xl h-11 transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30"
-                      maxLength={20}
                     />
+                    <FieldError message={errors.phone?.message} />
                   </div>
                   <div>
                     <label className="text-xs font-semibold text-foreground mb-1.5 block uppercase tracking-wide">Company Name</label>
                     <Input
-                      value={form.company}
-                      onChange={e => setForm({ ...form, company: e.target.value })}
+                      {...register("company")}
                       placeholder="Your organisation"
                       className="rounded-xl h-11 transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30"
-                      maxLength={100}
                     />
                   </div>
                 </div>
@@ -265,18 +242,15 @@ const Contact = () => {
                   <div>
                     <label className="text-xs font-semibold text-foreground mb-1.5 block uppercase tracking-wide">Job Title</label>
                     <Input
-                      value={form.jobTitle}
-                      onChange={e => setForm({ ...form, jobTitle: e.target.value })}
+                      {...register("jobTitle")}
                       placeholder="e.g. IT Manager, CTO"
                       className="rounded-xl h-11 transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30"
-                      maxLength={100}
                     />
                   </div>
                   <div>
                     <label className="text-xs font-semibold text-foreground mb-1.5 block uppercase tracking-wide">Number of Employees</label>
                     <select
-                      value={form.employees}
-                      onChange={e => setForm({ ...form, employees: e.target.value })}
+                      {...register("employees")}
                       className="w-full rounded-xl h-11 border border-input bg-background px-3 text-sm transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 focus:outline-none"
                     >
                       <option value="">Select range</option>
@@ -290,18 +264,15 @@ const Contact = () => {
                   <div>
                     <label className="text-xs font-semibold text-foreground mb-1.5 block uppercase tracking-wide">Location</label>
                     <Input
-                      value={form.location}
-                      onChange={e => setForm({ ...form, location: e.target.value })}
+                      {...register("location")}
                       placeholder="City, State"
                       className="rounded-xl h-11 transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30"
-                      maxLength={100}
                     />
                   </div>
                   <div>
                     <label className="text-xs font-semibold text-foreground mb-1.5 block uppercase tracking-wide">Required Solution</label>
                     <select
-                      value={form.solution}
-                      onChange={e => setForm({ ...form, solution: e.target.value })}
+                      {...register("solution")}
                       className="w-full rounded-xl h-11 border border-input bg-background px-3 text-sm transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 focus:outline-none"
                     >
                       <option value="">Select a service</option>
@@ -314,21 +285,20 @@ const Contact = () => {
                 <div>
                   <label className="text-xs font-semibold text-foreground mb-1.5 block uppercase tracking-wide">Project Details</label>
                   <Textarea
-                    value={form.message}
-                    onChange={e => setForm({ ...form, message: e.target.value })}
+                    {...register("message")}
                     placeholder="Briefly describe your current IT environment, the challenge you're facing, or the outcome you want to achieve..."
                     className="rounded-xl min-h-[130px] resize-none transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30"
-                    maxLength={1000}
                   />
-                  <p className="text-xs text-muted-foreground mt-1.5 text-right">{form.message.length}/1000</p>
+                  <p className="text-xs text-muted-foreground mt-1.5 text-right">{messageLen}/1000</p>
+                  <FieldError message={errors.message?.message} />
                 </div>
 
                 <Button
                   type="submit"
-                  disabled={loading}
+                  disabled={isSubmitting}
                   className="w-full rounded-xl h-12 gradient-peach border-0 text-secondary-foreground font-semibold hover:opacity-90 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all"
                 >
-                  {loading ? (
+                  {isSubmitting ? (
                     <div className="w-4 h-4 rounded-full border-2 border-secondary-foreground/30 border-t-secondary-foreground animate-spin" />
                   ) : (
                     <><Send className="h-4 w-4 mr-2" /> Contact Our Team — We Reply in 2 Hours</>
@@ -431,47 +401,7 @@ const Contact = () => {
               <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">Common Questions</h2>
               <p className="mt-4 text-muted-foreground">Everything you need to know before reaching out.</p>
             </AnimatedSection>
-
-            <div className="space-y-3">
-              {faqs.map((faq, i) => (
-                <AnimatedSection key={faq.q} delay={i * 0.04}>
-                  <div className="rounded-2xl border border-border bg-card card-elevated overflow-hidden hover:border-primary/30 transition-colors duration-300">
-                    <button
-                      onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                      className="w-full flex items-center justify-between p-5 text-left group focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset outline-none"
-                      aria-expanded={openFaq === i}
-                    >
-                      <span className="font-semibold text-foreground text-sm group-hover:text-primary transition-colors duration-200 pr-4">
-                        {faq.q}
-                      </span>
-                      <motion.div
-                        animate={{ rotate: openFaq === i ? 180 : 0 }}
-                        transition={{ duration: 0.25 }}
-                        className="flex-shrink-0"
-                      >
-                        <ChevronDown className="h-4 w-4 text-muted-foreground" />
-                      </motion.div>
-                    </button>
-                    <AnimatePresence initial={false}>
-                      {openFaq === i && (
-                        <motion.div
-                          key="answer"
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{   height: 0,    opacity: 0 }}
-                          transition={{ duration: 0.28, ease: [0.25, 0.4, 0.25, 1] }}
-                          className="overflow-hidden"
-                        >
-                          <p className="px-5 pb-5 text-sm text-muted-foreground leading-relaxed border-t border-border/50 pt-4">
-                            {faq.a}
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </AnimatedSection>
-              ))}
-            </div>
+            <FAQAccordion faqs={faqsData.contact} />
           </div>
         </div>
       </section>

@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "why-indian-enterprises-are-moving-to-hybrid-cloud-2025",
+    "tag": "Cloud",
+    "title": "Why Indian Enterprises Are Moving to Hybrid Cloud in 2025",
+    "read": "5 min read",
+    "color": "bg-sky-400/10 text-sky-700 dark:text-sky-300",
+    "excerpt": "Indian enterprises are rapidly adopting hybrid cloud architectures to balance compliance requirements with cloud elasticity. Here's what's driving the shift.",
+    "publishedAt": "2025-03-01"
+  },
+  {
+    "slug": "hidden-vulnerabilities-on-premise-network",
+    "tag": "Cybersecurity",
+    "title": "The Hidden Vulnerabilities in Your On-Premise Network",
+    "read": "6 min read",
+    "color": "bg-violet-400/10 text-violet-700 dark:text-violet-300",
+    "excerpt": "Most organisations underestimate their internal attack surface. A structured VAPT reveals what your existing vendor missed.",
+    "publishedAt": "2025-03-15"
+  },
+  {
+    "slug": "24x7-it-service-desk-cuts-support-costs",
+    "tag": "Managed Services",
+    "title": "How a 24×7 IT Service Desk Cuts Support Costs by 40%",
+    "read": "4 min read",
+    "color": "bg-emerald-400/10 text-emerald-700 dark:text-emerald-300",
+    "excerpt": "Reactive IT support is expensive. Proactive managed services with SLA-backed incident response consistently deliver 30–50% cost reductions.",
+    "publishedAt": "2025-04-01"
+  }
+]

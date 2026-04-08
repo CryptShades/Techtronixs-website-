@@ -1,0 +1,27 @@
+[
+  {
+    "icon": "Brain",
+    "title": "Expert-Led Assessment",
+    "desc": "360° IT evaluation by experienced professionals — we assess your full landscape before recommending anything. No assumptions, no vendor bias."
+  },
+  {
+    "icon": "Users",
+    "title": "Dedicated Technical Teams",
+    "desc": "Skilled technical experts assigned to every engagement. You get real specialists, not junior consultants or subcontractors passed off as seniors."
+  },
+  {
+    "icon": "Shield",
+    "title": "Strong Governance",
+    "desc": "High compliance and quality control standards embedded into every solution — aligning your IT operations with industry and regulatory requirements."
+  },
+  {
+    "icon": "Zap",
+    "title": "Flexible Engagement Models",
+    "desc": "Tailored models based on your business needs — from fully outsourced managed services to co-managed augmentation of your existing team."
+  },
+  {
+    "icon": "Globe",
+    "title": "Reliable 24×7 Support",
+    "desc": "Always-on service desk with PAN India operations. We resolve incidents fast — day, night, or weekend — under defined SLA commitments."
+  }
+]

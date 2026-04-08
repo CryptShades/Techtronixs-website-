@@ -1,0 +1,110 @@
+{
+  "home": [
+    {
+      "q": "What is Techtronix Solutions?",
+      "a": "Techtronix Solutions is an IT infrastructure and managed services company headquartered in New Delhi, India. We deliver end-to-end IT services — cloud, cybersecurity, hybrid IT, data center, and 24×7 managed support — for enterprises across PAN India."
+    },
+    {
+      "q": "Where does Techtronix operate?",
+      "a": "Techtronix is headquartered in Uttam Nagar, New Delhi, with sales and support presence across major metros including Mumbai, Bengaluru, Hyderabad, and Chennai — providing full PAN India IT support coverage."
+    },
+    {
+      "q": "What makes Techtronix different from other IT companies?",
+      "a": "Techtronix offers a single point of accountability across the full IT lifecycle — from assessment and deployment to ongoing managed services. We combine multi-OEM certifications, dedicated technical teams, 24×7 support, and transparent governance to deliver measurable business outcomes."
+    },
+    {
+      "q": "How quickly can Techtronix respond to IT incidents?",
+      "a": "Our 24×7 Managed IT Service Desk provides SLA-backed incident response — typically within 15 minutes for critical issues. We operate round-the-clock, including weekends and public holidays, across all supported client environments."
+    },
+    {
+      "q": "Does Techtronix provide cybersecurity services?",
+      "a": "Yes. Techtronix provides comprehensive cybersecurity services including Vulnerability Assessment & Penetration Testing (VAPT), SIEM deployment, firewall management, compliance advisory, and 24×7 Security Operations Centre (SOC) monitoring."
+    }
+  ],
+  "services": [
+    {
+      "q": "What IT services does Techtronix Solutions provide?",
+      "a": "Techtronix Solutions provides end-to-end IT services including Digital Workplace Solutions, Cloud Solutions, Cybersecurity, Hybrid IT Infrastructure, Data Center Services, and 24×7 Managed IT Services — covering the full IT lifecycle for enterprises across PAN India."
+    },
+    {
+      "q": "Does Techtronix offer 24×7 IT support across India?",
+      "a": "Yes. Techtronix operates a 24×7 Managed IT Service Desk with PAN India coverage, providing always-on incident response, proactive monitoring, and SLA-backed support for enterprises in Delhi, Mumbai, Bengaluru, Hyderabad, Chennai, and beyond."
+    },
+    {
+      "q": "What industries does Techtronix serve?",
+      "a": "Techtronix serves manufacturing, financial services (BFSI), logistics, healthcare, and professional services — delivering IT infrastructure and managed services tailored to each sector's compliance and operational requirements."
+    },
+    {
+      "q": "How does Techtronix's managed IT service model work?",
+      "a": "Our managed IT service begins with a full IT assessment of your current environment. We design a support model — co-managed or fully outsourced — with defined SLAs, dedicated technical resources, proactive monitoring, and a single point of accountability for all IT operations."
+    },
+    {
+      "q": "Can Techtronix manage both on-premise and cloud environments?",
+      "a": "Yes. Techtronix specialises in hybrid IT environments — managing on-premise servers, private clouds, and public cloud workloads (AWS, Azure, GCP) as a unified managed service with consistent governance and reporting."
+    },
+    {
+      "q": "How do I get started with Techtronix IT services?",
+      "a": "Contact our team via the enquiry form or call +91-9315692845. We begin every engagement with a complimentary IT discovery session to understand your current challenges and environment before proposing any solution."
+    }
+  ],
+  "about": [
+    {
+      "q": "When was Techtronix Solutions founded?",
+      "a": "Techtronix Solutions was founded in October 2024 in New Delhi, India. Despite being a young company, we rapidly built a multi-sector client base and expanded our service delivery across PAN India within our first year of operations."
+    },
+    {
+      "q": "Where is Techtronix Solutions headquartered?",
+      "a": "Techtronix Solutions is headquartered at A-4, 1st Floor, Siddhatri Enclave, Jain Road, Uttam Nagar, New Delhi – 110059. We also have sales and support presence in Mumbai, Bengaluru, Hyderabad, and Chennai."
+    },
+    {
+      "q": "What is Techtronix Solutions' mission?",
+      "a": "Our mission is to deliver scalable, secure, and innovative IT solutions that enhance business efficiency and create long-term value for every organisation we serve. We measure success by client business outcomes, not contract volumes."
+    },
+    {
+      "q": "How many clients does Techtronix serve?",
+      "a": "Techtronix Solutions serves 50+ enterprise clients across India, spanning manufacturing, BFSI, logistics, healthcare, and professional services — with a 99% SLA adherence rate and 24×7 managed support coverage."
+    },
+    {
+      "q": "What makes Techtronix different from other IT companies?",
+      "a": "Techtronix offers end-to-end accountability — from initial IT assessment to deployment and ongoing managed operations — with the same dedicated technical team throughout the engagement. We combine multi-OEM expertise with honest governance and transparent communication."
+    }
+  ],
+  "contact": [
+    {
+      "q": "What are managed IT services?",
+      "a": "Managed IT services means outsourcing the day-to-day management, monitoring, and support of your IT infrastructure to a specialist provider like Techtronix. Instead of reacting to problems after they occur, we proactively monitor your systems 24×7, apply patches, resolve incidents, and report on performance — all under a defined SLA."
+    },
+    {
+      "q": "How can cloud solutions reduce IT costs?",
+      "a": "Cloud eliminates large upfront capital expenditure on hardware and data centre facilities. You pay for what you use, scale up or down on demand, and reduce the cost of maintenance, power, and cooling. Our FinOps practice typically identifies 30–50% in cloud spend savings for organisations that have migrated without cost governance in place."
+    },
+    {
+      "q": "Why is cybersecurity important for businesses?",
+      "a": "A single data breach can cost an organisation millions in remediation, regulatory fines, and reputational damage. Cyber threats — ransomware, phishing, insider attacks — are increasingly targeting mid-sized Indian businesses that lack dedicated security teams. A structured cybersecurity programme is no longer optional; it's a board-level business continuity requirement."
+    },
+    {
+      "q": "What is hybrid IT infrastructure?",
+      "a": "Hybrid IT combines on-premise infrastructure with private and public cloud environments, connected through secure networking. It allows organisations to keep sensitive workloads on-premise for compliance reasons while leveraging cloud elasticity for everything else — giving you the best of both worlds without a disruptive full cloud migration."
+    },
+    {
+      "q": "How quickly can Techtronix start on a new project?",
+      "a": "Most projects begin within 1–2 weeks of contract signing. For urgent requirements — such as post-incident response or time-critical migrations — we can mobilise within 72 hours. Just mention your timeline in the contact form and we'll prioritise accordingly."
+    },
+    {
+      "q": "Do you provide services outside Delhi?",
+      "a": "Yes. Techtronix has a PAN India support and sales presence covering major metros including Mumbai, Bengaluru, Hyderabad, Chennai, and Pune. For on-site requirements in other cities, we coordinate through our certified partner network to ensure the same service quality."
+    },
+    {
+      "q": "What OEM brands do you work with?",
+      "a": "We are multi-vendor certified and work with leading OEMs including Cisco, Microsoft, HPE, Dell, VMware, NetApp, Juniper, and Veritas. Our vendor-agnostic approach means we recommend the right technology for your specific requirements — not the product that earns us the highest margin."
+    },
+    {
+      "q": "What is your pricing model?",
+      "a": "We offer three engagement models: fixed-price for well-scoped projects, time & materials for evolving requirements, and monthly retainers for managed services. We present a clear, itemised proposal after an initial discovery call — no surprise charges, no vague estimates."
+    },
+    {
+      "q": "Is our data and IP protected when working with Techtronix?",
+      "a": "Absolutely. All engagements begin with a signed NDA. Any IP, configurations, or documentation created during the project are fully owned by you. Our engineers operate under strict confidentiality agreements and follow ISO 27001-aligned data handling practices."
+    }
+  ]
+}

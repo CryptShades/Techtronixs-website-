@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Moon, Sun, Server } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CertificationBadge from "@/components/CertificationBadge";
 
@@ -51,9 +51,6 @@ const Navbar = () => {
           aria-label="Techtronix Solutions home"
         >
           <img src="/website-logo.png" alt="Techtronix Solutions" className="w-8 h-8 rounded-full shadow" />
-          {/* <div className="w-8 h-8 rounded-xl gradient-peach flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-            <Server className="h-4 w-4 text-secondary-foreground" />
-          </div> */}
           <span className="font-display font-bold text-xl tracking-tight text-foreground">
             Techtronix<span className="gradient-text"> Solutions</span>
           </span>

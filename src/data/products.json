@@ -4,7 +4,7 @@
     "title": "HPE ProLiant Gen11 Servers",
     "brand": "HPE",
     "description": "Industry-leading rack and tower servers engineered for performance, reliability, and intelligent automation — ideal for modern enterprise workloads.",
-    "image": "",
+    "image": "/assets/products/hpe-proliant-gen11.webp",
     "tags": ["HPE", "Servers"],
     "category": "Servers & Infrastructure",
     "link": "/products"
@@ -14,7 +14,7 @@
     "title": "Dell PowerEdge Rack Servers",
     "brand": "Dell",
     "description": "Scalable rack servers delivering exceptional compute density and efficiency for data centres of all sizes, with integrated lifecycle management.",
-    "image": "",
+    "image": "/assets/products/dell-poweredge.webp",
     "tags": ["Dell", "Servers"],
     "category": "Servers & Infrastructure",
     "link": "/products"
@@ -24,7 +24,7 @@
     "title": "NetApp AFF All-Flash Storage",
     "brand": "NetApp",
     "description": "High-performance all-flash storage arrays delivering ultra-low latency and enterprise reliability for mission-critical databases and applications.",
-    "image": "",
+    "image": "/assets/products/netapp-aff.webp",
     "tags": ["NetApp", "Flash"],
     "category": "Storage Solutions",
     "link": "/products"
@@ -34,7 +34,7 @@
     "title": "Dell EMC PowerStore",
     "brand": "Dell EMC",
     "description": "Intelligent, adaptable storage platform with built-in machine learning for predictive analytics, seamless scalability, and simplified management.",
-    "image": "",
+    "image": "/assets/products/dell-emc-powerstore.webp",
     "tags": ["Dell EMC", "Storage"],
     "category": "Storage Solutions",
     "link": "/products"
@@ -44,7 +44,7 @@
     "title": "Veritas NetBackup",
     "brand": "Veritas",
     "description": "Enterprise-class backup and recovery solution protecting physical, virtual, and cloud workloads with automated policy management and deduplication.",
-    "image": "",
+    "image": "/assets/products/veritas-netbackup.webp",
     "tags": ["Veritas", "Backup"],
     "category": "Backup & Tape Solutions",
     "link": "/products"
@@ -54,7 +54,7 @@
     "title": "HPE StoreEver Tape Library",
     "brand": "HPE",
     "description": "Cost-effective, high-capacity tape archiving and long-term data retention solution with LTO technology and intelligent media management.",
-    "image": "",
+    "image": "/assets/products/hpe-storeever.webp",
     "tags": ["HPE", "Tape"],
     "category": "Backup & Tape Solutions",
     "link": "/products"
@@ -64,7 +64,7 @@
     "title": "Cisco Catalyst Switches",
     "brand": "Cisco",
     "description": "Enterprise-grade switching infrastructure offering high availability, advanced security features, and simplified network operations for campus and branch environments.",
-    "image": "",
+    "image": "/assets/products/cisco-catalyst.webp",
     "tags": ["Cisco", "Networking"],
     "category": "Networking Devices",
     "link": "/products"
@@ -74,7 +74,7 @@
     "title": "Juniper EX Series Switches",
     "brand": "Juniper",
     "description": "High-performance Ethernet switches for modern enterprise networks featuring zero-touch provisioning, advanced security, and AI-driven operations.",
-    "image": "",
+    "image": "/assets/products/juniper-ex.webp",
     "tags": ["Juniper", "Networking"],
     "category": "Networking Devices",
     "link": "/products"
