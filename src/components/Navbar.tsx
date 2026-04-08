@@ -50,7 +50,7 @@ const Navbar = () => {
           className="flex items-center gap-2.5 group focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 outline-none rounded-xl p-1"
           aria-label="Techtronix Solutions home"
         >
-          <img src="/website-logo.png" alt="Techtronix Solutions" className="w-6 h-6" />
+          <img src="/website-logo.png" alt="Techtronix Solutions" className="w-12 h-12 rounded-full shadow" />
           {/* <div className="w-8 h-8 rounded-xl gradient-peach flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
             <Server className="h-4 w-4 text-secondary-foreground" />
           </div> */}
