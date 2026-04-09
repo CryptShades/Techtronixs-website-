@@ -1,5 +1,4 @@
-import { lazy, Suspense } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { lazy, Suspense, useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Toaster } from "@/components/ui/toaster";
@@ -13,9 +12,8 @@ const About    = lazy(() => import("./pages/About"));
 const Products = lazy(() => import("./pages/Products"));
 const Services = lazy(() => import("./pages/Services"));
 const Contact  = lazy(() => import("./pages/Contact"));
+const BlogPost = lazy(() => import("./pages/blog/BlogPost"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-
-const queryClient = new QueryClient();
 
 const Loader = () => (
   <div className="min-h-[60vh] flex flex-col items-center justify-center gap-6">
@@ -60,12 +58,13 @@ const AppShell = () => {
         >
           <Suspense fallback={<Loader />}>
             <Routes location={location}>
-              <Route path="/"         element={<Index />} />
-              <Route path="/about"    element={<About />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/contact"  element={<Contact />} />
-              <Route path="*"         element={<NotFound />} />
+              <Route path="/"           element={<Index />} />
+              <Route path="/about"      element={<About />} />
+              <Route path="/products"   element={<Products />} />
+              <Route path="/services"   element={<Services />} />
+              <Route path="/contact"    element={<Contact />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="*"           element={<NotFound />} />
             </Routes>
           </Suspense>
         </motion.div>
@@ -76,16 +75,25 @@ const AppShell = () => {
   );
 };
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
+const useFinePointer = () => {
+  const [fine, setFine] = useState(false);
+  useEffect(() => {
+    setFine(window.matchMedia("(pointer: fine)").matches);
+  }, []);
+  return fine;
+};
+
+const App = () => {
+  const hasFinePointer = useFinePointer();
+  return (
     <TooltipProvider>
       <Toaster />
       <BrowserRouter>
-        <CursorGlow />
+        {hasFinePointer && <CursorGlow />}
         <AppShell />
       </BrowserRouter>
     </TooltipProvider>
-  </QueryClientProvider>
-);
+  );
+};
 
 export default App;

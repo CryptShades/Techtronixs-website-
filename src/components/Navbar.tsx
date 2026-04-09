@@ -4,26 +4,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Moon, Sun, Server } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CertificationBadge from "@/components/CertificationBadge";
+import { useTheme } from "@/hooks/useTheme";
+import navConfig from "@/data/nav.config.json";
 
-const navLinks = [
-  { to: "/",         label: "Home"     },
-  { to: "/about",    label: "About"    },
-  { to: "/products", label: "Products" },
-  { to: "/services", label: "Services" },
-  { to: "/contact",  label: "Contact"  },
-];
+const navLinks = navConfig.primary;
 
 const Navbar = () => {
-  const [open,      setOpen]     = useState(false);
-  const [scrolled,  setScrolled] = useState(false);
-  const [dark,      setDark]     = useState(() => localStorage.getItem("theme") === "dark");
+  const [open,     setOpen]     = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { dark, toggle: toggleDark } = useTheme();
   const location = useLocation();
   const onContact = location.pathname === "/contact";
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-    localStorage.setItem("theme", dark ? "dark" : "light");
-  }, [dark]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -89,7 +80,7 @@ const Navbar = () => {
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setDark(!dark)}
+            onClick={toggleDark}
             className="rounded-xl h-9 w-9 text-muted-foreground hover:text-foreground focus-visible:ring-2 focus-visible:ring-primary outline-none"
             aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
           >
@@ -175,7 +166,7 @@ const Navbar = () => {
               label="ISO 9001:2015 Certified"
               shortLabel="ISO 9001"
               tooltip="Quality Management System — certified to ISO 9001:2015 standards"
-              delay={0.9}
+              delay={0.2}
             />
 
             {/* Separator dot */}
@@ -186,7 +177,7 @@ const Navbar = () => {
               label="ISO/IEC 27001:2022 Certified"
               shortLabel="ISO 27001"
               tooltip="Information Security Management — certified to ISO/IEC 27001:2022 standards"
-              delay={1.0}
+              delay={0.3}
             />
           </div>
         </div>

@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { Code2, Cloud, Brain, Shield, Palette, Settings, LucideIcon, CheckCircle2 } from "lucide-react";
-
-const iconMap: Record<string, LucideIcon> = { Code2, Cloud, Brain, Shield, Palette, Settings };
+import { Code2, CheckCircle2 } from "lucide-react";
+import { iconMap } from "@/lib/icon-map";
 
 interface ServiceCardProps {
   title: string;

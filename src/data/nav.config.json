@@ -1,0 +1,39 @@
+{
+  "primary": [
+    { "to": "/",         "label": "Home"     },
+    { "to": "/about",    "label": "About"    },
+    { "to": "/products", "label": "Products" },
+    { "to": "/services", "label": "Services" },
+    { "to": "/contact",  "label": "Contact"  }
+  ],
+  "footer": [
+    {
+      "title": "Company",
+      "links": [
+        { "label": "About Us",  "href": "/about"    },
+        { "label": "Products",  "href": "/products" },
+        { "label": "Services",  "href": "/services" },
+        { "label": "Contact",   "href": "/contact"  }
+      ]
+    },
+    {
+      "title": "Services",
+      "links": [
+        { "label": "Cloud Solutions",     "href": "/services" },
+        { "label": "Cybersecurity",       "href": "/services" },
+        { "label": "Hybrid IT",           "href": "/services" },
+        { "label": "Managed IT Services", "href": "/services" },
+        { "label": "Data Center",         "href": "/services" }
+      ]
+    },
+    {
+      "title": "Support",
+      "links": [
+        { "label": "Contact Us",  "href": "/contact" },
+        { "label": "IT Helpdesk", "href": "/contact" },
+        { "label": "Get a Quote", "href": "/contact" },
+        { "label": "Careers",     "href": "#"        }
+      ]
+    }
+  ]
+}

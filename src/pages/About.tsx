@@ -84,6 +84,17 @@ const faqSchema = {
   })),
 };
 
+const speakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "About Techtronix Solutions",
+  "url": "https://techtronixsolutions.com/about",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".about-mission-section", ".about-story-section"],
+  },
+};
+
 const gridStagger = {
   hidden: {},
   show: { transition: { staggerChildren: 0.09 } },
@@ -108,6 +119,7 @@ const About = () => {
 
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
 
     {/* ── Hero ──────────────────────────────────────── */}
     <section className="relative py-28 md:py-40 overflow-hidden">
@@ -145,7 +157,7 @@ const About = () => {
     </section>
 
     {/* ── Story + Stats ─────────────────────────────── */}
-    <section className="py-20 md:py-28 bg-muted/25 border-y border-border/60">
+    <section className="about-story-section py-20 md:py-28 bg-muted/25 border-y border-border/60">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <AnimatedSection>
@@ -195,7 +207,7 @@ const About = () => {
     </section>
 
     {/* ── Mission / Vision / Motto ───────────────────── */}
-    <section className="py-28 md:py-36">
+    <section className="about-mission-section py-28 md:py-36">
       <div className="container mx-auto px-4">
         <SectionHeading label="Purpose" title="Mission, Vision & Motto" />
         <motion.div

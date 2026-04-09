@@ -1,0 +1,26 @@
+{
+  "brand": "Techtronix Solutions",
+  "shortBrand": "Techtronix",
+  "baseUrl": "https://techtronixsolutions.com",
+  "defaultOgImage": "https://techtronixsolutions.com/og-image.png",
+  "twitter": "@TechtronixSol",
+  "email": "sales@techtronixsolutions.com",
+  "phones": ["+91-9315692845", "+91-8860434566"],
+  "address": {
+    "street": "A-4, 1st Floor, Siddhatri Enclave, Jain Road",
+    "locality": "Uttam Nagar",
+    "region": "Delhi",
+    "postalCode": "110059",
+    "country": "IN",
+    "display": "A-4, 1st Floor, Siddhatri Enclave, Uttam Nagar, New Delhi – 110059"
+  },
+  "social": {
+    "linkedin": "https://linkedin.com/company/techtronix-solutions",
+    "twitter": "https://twitter.com/TechtronixSol",
+    "github": "#"
+  },
+  "certifications": [
+    { "label": "ISO 9001:2015 Certified",     "shortLabel": "ISO 9001",  "variant": "quality",  "tooltip": "Quality Management System — certified to ISO 9001:2015 standards" },
+    { "label": "ISO/IEC 27001:2022 Certified", "shortLabel": "ISO 27001", "variant": "security", "tooltip": "Information Security Management — certified to ISO/IEC 27001:2022 standards" }
+  ]
+}

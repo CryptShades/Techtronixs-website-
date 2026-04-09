@@ -1,6 +1,7 @@
 [
   {
     "id": "1",
+    "slug": "digital-workplace-solutions",
     "title": "Digital Workplace Solutions",
     "description": "We transform traditional work environments into agile, connected digital workplaces. Our end-to-end approach covers modern collaboration platforms, unified communications, device management, and end-user support. We assess your current environment, design a future-ready architecture, and execute a phased rollout that minimises disruption. With Microsoft 365, Google Workspace, and VDI solutions at the core, your teams gain secure access to tools and data from anywhere — driving productivity without compromising security. We also implement ITSM frameworks and helpdesk automation to reduce resolution times and improve the overall employee technology experience.",
     "icon": "Monitor",
@@ -20,6 +21,7 @@
   },
   {
     "id": "2",
+    "slug": "cloud-solutions",
     "title": "Cloud Solutions",
     "description": "From cloud migration to native application modernisation, we help organisations leverage the full potential of public, private, and hybrid cloud environments. Our cloud architects work across AWS, Microsoft Azure, and Google Cloud, designing infrastructure that is scalable, cost-efficient, and aligned to your business objectives. We begin every engagement with a cloud readiness assessment to identify workloads, dependencies, and risks — then execute a structured migration with zero business disruption. Post-migration, our FinOps practice ensures your cloud spend is continuously optimised with automated cost alerts, reserved instance planning, and rightsizing recommendations.",
     "icon": "Cloud",
@@ -39,6 +41,7 @@
   },
   {
     "id": "3",
+    "slug": "cybersecurity",
     "title": "Cybersecurity",
     "description": "In an era of escalating cyber threats, a reactive security posture is no longer sufficient. Our cybersecurity practice builds proactive, layered defences across your entire IT landscape — from endpoints and networks to cloud workloads and applications. We conduct comprehensive vulnerability assessments and penetration tests, then implement zero-trust architecture frameworks, endpoint detection & response, and SIEM platforms. For organisations subject to regulatory requirements, we provide structured compliance support for ISO 27001, SOC 2, and India's DPDPA framework. Our SOC-as-a-Service offering delivers 24×7 threat monitoring and incident response with defined SLAs.",
     "icon": "Shield",
@@ -58,6 +61,7 @@
   },
   {
     "id": "4",
+    "slug": "hybrid-it-solutions",
     "title": "Hybrid IT Solutions",
     "description": "Most enterprises don't live entirely in the cloud — and they shouldn't have to. Our Hybrid IT practice helps organisations build cohesive infrastructure spanning on-premise data centres, private cloud, and public cloud environments. We architect seamless connectivity using SD-WAN, MPLS, and cloud interconnect services, ensuring consistent performance and security across every workload. Whether you're extending your data centre, adopting a cloud-first policy for new applications, or consolidating legacy infrastructure, we deliver an integrated hybrid model tailored to your specific compliance, performance, and cost requirements.",
     "icon": "Server",
@@ -77,6 +81,7 @@
   },
   {
     "id": "5",
+    "slug": "data-center-services",
     "title": "Data Center Services",
     "description": "Your data centre is the heartbeat of your IT operations. We provide comprehensive data centre design, deployment, and management services that maximise uptime, efficiency, and security. Our team handles everything from physical rack-and-stack and structured cabling to server virtualisation, storage configuration, and full data centre migration. We specialise in hyper-converged infrastructure (HCI) deployments and work with leading OEMs including HPE, Dell EMC, Cisco, and NetApp. For organisations planning a data centre relocation or modernisation, we deliver detailed planning, risk management, and a tested cutover strategy to ensure zero data loss and minimal downtime.",
     "icon": "Database",
@@ -96,6 +101,7 @@
   },
   {
     "id": "6",
+    "slug": "managed-it-services",
     "title": "Managed IT Services",
     "description": "Running IT in-house is expensive, complex, and distracts your teams from core business priorities. Our Managed IT Services model gives you a dedicated team of certified engineers handling monitoring, maintenance, and incident resolution — all backed by defined SLAs. We offer flexible engagement tiers: from a fully outsourced IT function to co-managed models that augment your existing team. Our service scope covers 24×7 IT service desk, network & security management, server & storage operations, application monitoring, and IT asset & vendor management. Every client receives a dedicated service manager and quarterly business reviews.",
     "icon": "Headphones",
