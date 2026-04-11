@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { useEffect, useRef, ReactNode } from "react";
 
 interface AnimatedSectionProps {
   children: ReactNode;
@@ -7,16 +6,38 @@ interface AnimatedSectionProps {
   delay?: number;
 }
 
-const AnimatedSection = ({ children, className = "", delay = 0 }: AnimatedSectionProps) => (
-  <motion.div
-    initial={{ opacity: 0, y: 28 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-70px" }}
-    transition={{ duration: 0.45, delay, ease: [0.25, 0.4, 0.25, 1] }}
-    className={className}
-  >
-    {children}
-  </motion.div>
-);
+/**
+ * Lightweight fade-up on scroll — uses a single IntersectionObserver
+ * and CSS @keyframes instead of Framer Motion, eliminating per-element
+ * motion nodes on static content.
+ */
+const AnimatedSection = ({ children, className = "", delay = 0 }: AnimatedSectionProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.style.animationDelay = `${delay}s`;
+          el.classList.add("anim-visible");
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.1, rootMargin: "-60px 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [delay]);
+
+  return (
+    <div ref={ref} className={`anim-fade-up ${className}`}>
+      {children}
+    </div>
+  );
+};
 
 export default AnimatedSection;

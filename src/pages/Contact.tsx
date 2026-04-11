@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Mail, Phone, MapPin, Send, Github, Twitter, Linkedin,
   MessageSquare, Clock, ArrowRight, Calendar, ChevronDown,
 } from "lucide-react";
-import { AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,22 +14,40 @@ import { useToast } from "@/hooks/use-toast";
 import AnimatedSection from "@/components/AnimatedSection";
 import MainLayout from "@/layouts/MainLayout";
 import PageMeta from "@/components/PageMeta";
+import config from "@/data/site.config.json";
 
+/* ── Zod schema ─────────────────────────────────────────── */
+const schema = z.object({
+  name:      z.string().min(2, "Name must be at least 2 characters").max(100),
+  email:     z.string().email("Enter a valid email address").max(255),
+  phone:     z.string()
+               .min(7, "Enter a valid phone number")
+               .max(20)
+               .regex(/^[+\d\s\-()]+$/, "Enter a valid phone number"),
+  company:   z.string().max(100).optional(),
+  jobTitle:  z.string().max(100).optional(),
+  employees: z.string().optional(),
+  location:  z.string().max(100).optional(),
+  solution:  z.string().optional(),
+  message:   z.string().max(1000).optional(),
+});
+
+type FormValues = z.infer<typeof schema>;
+
+/* ── Static data ────────────────────────────────────────── */
 const contactInfo = [
-  { icon: Mail,   label: "Email Us",  value: "sales@techtronixsolutions.com",             sub: "Replies within 2 business hours"     },
-  { icon: Phone,  label: "Call Us",   value: "+91-9315692845 / +91-8860434566",            sub: "Mon–Sat, 9am–6pm IST"                },
-  { icon: MapPin, label: "Visit Us",  value: "A-4, 1st Floor, Siddhatri Enclave, New Delhi", sub: "Jain Road, Uttam Nagar – 110059"  },
+  { icon: Mail,   label: "Email Us",  value: config.email,                                         sub: "Replies within 2 business hours" },
+  { icon: Phone,  label: "Call Us",   value: `${config.phones[0]} / ${config.phones[1]}`,          sub: "Mon–Sat, 9am–6pm IST"            },
+  { icon: MapPin, label: "Visit Us",  value: `${config.address.street}, ${config.address.locality}`, sub: `Jain Road, Uttam Nagar – ${config.address.postalCode}` },
 ];
 
 const socialLinks = [
-  { Icon: Github,   label: "GitHub",   href: "#" },
-  { Icon: Twitter,  label: "Twitter",  href: "#" },
-  { Icon: Linkedin, label: "LinkedIn", href: "#" },
+  { Icon: Github,   label: "GitHub",   href: config.social.github   },
+  { Icon: Twitter,  label: "Twitter",  href: config.social.twitter  },
+  { Icon: Linkedin, label: "LinkedIn", href: config.social.linkedin },
 ];
 
-const employeeOptions = [
-  "1–10", "11–50", "51–200", "201–500", "500+"
-];
+const employeeOptions = ["1–10", "11–50", "51–200", "201–500", "500+"];
 
 const solutionOptions = [
   "Digital Workplace Solutions",
@@ -45,39 +65,39 @@ const solutionOptions = [
 const faqs = [
   {
     q: "What are managed IT services?",
-    a: "Managed IT services means outsourcing the day-to-day management, monitoring, and support of your IT infrastructure to a specialist provider like Techtronix. Instead of reacting to problems after they occur, we proactively monitor your systems 24×7, apply patches, resolve incidents, and report on performance — all under a defined SLA."
+    a: "Managed IT services means outsourcing the day-to-day management, monitoring, and support of your IT infrastructure to a specialist provider like Techtronix. Instead of reacting to problems after they occur, we proactively monitor your systems 24×7, apply patches, resolve incidents, and report on performance — all under a defined SLA.",
   },
   {
     q: "How can cloud solutions reduce IT costs?",
-    a: "Cloud eliminates large upfront capital expenditure on hardware and data centre facilities. You pay for what you use, scale up or down on demand, and reduce the cost of maintenance, power, and cooling. Our FinOps practice typically identifies 30–50% in cloud spend savings for organisations that have migrated without cost governance in place."
+    a: "Cloud eliminates large upfront capital expenditure on hardware and data centre facilities. You pay for what you use, scale up or down on demand, and reduce the cost of maintenance, power, and cooling. Our FinOps practice typically identifies 30–50% in cloud spend savings for organisations that have migrated without cost governance in place.",
   },
   {
     q: "Why is cybersecurity important for businesses?",
-    a: "A single data breach can cost an organisation millions in remediation, regulatory fines, and reputational damage. Cyber threats — ransomware, phishing, insider attacks — are increasingly targeting mid-sized Indian businesses that lack dedicated security teams. A structured cybersecurity programme is no longer optional; it's a board-level business continuity requirement."
+    a: "A single data breach can cost an organisation millions in remediation, regulatory fines, and reputational damage. Cyber threats — ransomware, phishing, insider attacks — are increasingly targeting mid-sized Indian businesses that lack dedicated security teams. A structured cybersecurity programme is no longer optional; it's a board-level business continuity requirement.",
   },
   {
     q: "What is hybrid IT infrastructure?",
-    a: "Hybrid IT combines on-premise infrastructure with private and public cloud environments, connected through secure networking. It allows organisations to keep sensitive workloads on-premise for compliance reasons while leveraging cloud elasticity for everything else — giving you the best of both worlds without a disruptive full cloud migration."
+    a: "Hybrid IT combines on-premise infrastructure with private and public cloud environments, connected through secure networking. It allows organisations to keep sensitive workloads on-premise for compliance reasons while leveraging cloud elasticity for everything else — giving you the best of both worlds without a disruptive full cloud migration.",
   },
   {
     q: "How quickly can Techtronix start on a new project?",
-    a: "Most projects begin within 1–2 weeks of contract signing. For urgent requirements — such as post-incident response or time-critical migrations — we can mobilise within 72 hours. Just mention your timeline in the contact form and we'll prioritise accordingly."
+    a: "Most projects begin within 1–2 weeks of contract signing. For urgent requirements — such as post-incident response or time-critical migrations — we can mobilise within 72 hours. Just mention your timeline in the contact form and we'll prioritise accordingly.",
   },
   {
     q: "Do you provide services outside Delhi?",
-    a: "Yes. Techtronix has a PAN India support and sales presence covering major metros including Mumbai, Bengaluru, Hyderabad, Chennai, and Pune. For on-site requirements in other cities, we coordinate through our certified partner network to ensure the same service quality."
+    a: "Yes. Techtronix has a PAN India support and sales presence covering major metros including Mumbai, Bengaluru, Hyderabad, Chennai, and Pune. For on-site requirements in other cities, we coordinate through our certified partner network to ensure the same service quality.",
   },
   {
     q: "What OEM brands do you work with?",
-    a: "We are multi-vendor certified and work with leading OEMs including Cisco, Microsoft, HPE, Dell, VMware, NetApp, Juniper, and Veritas. Our vendor-agnostic approach means we recommend the right technology for your specific requirements — not the product that earns us the highest margin."
+    a: "We are multi-vendor certified and work with leading OEMs including Cisco, Microsoft, HPE, Dell, VMware, NetApp, Juniper, and Veritas. Our vendor-agnostic approach means we recommend the right technology for your specific requirements — not the product that earns us the highest margin.",
   },
   {
     q: "What is your pricing model?",
-    a: "We offer three engagement models: fixed-price for well-scoped projects, time & materials for evolving requirements, and monthly retainers for managed services. We present a clear, itemised proposal after an initial discovery call — no surprise charges, no vague estimates."
+    a: "We offer three engagement models: fixed-price for well-scoped projects, time & materials for evolving requirements, and monthly retainers for managed services. We present a clear, itemised proposal after an initial discovery call — no surprise charges, no vague estimates.",
   },
   {
     q: "Is our data and IP protected when working with Techtronix?",
-    a: "Absolutely. All engagements begin with a signed NDA. Any IP, configurations, or documentation created during the project are fully owned by you. Our engineers operate under strict confidentiality agreements and follow ISO 27001-aligned data handling practices."
+    a: "Absolutely. All engagements begin with a signed NDA. Any IP, configurations, or documentation created during the project are fully owned by you. Our engineers operate under strict confidentiality agreements and follow ISO 27001-aligned data handling practices.",
   },
 ];
 
@@ -85,12 +105,11 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techtronixsolutions.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Contact Techtronix Solutions", "item": "https://techtronixsolutions.com/contact" },
+    { "@type": "ListItem", "position": 1, "name": "Home",                        "item": `${config.baseUrl}/`        },
+    { "@type": "ListItem", "position": 2, "name": "Contact Techtronix Solutions", "item": `${config.baseUrl}/contact` },
   ],
 };
 
-// Schema.org FAQPage JSON-LD
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -101,27 +120,39 @@ const faqSchema = {
   })),
 };
 
+/* ── Component ──────────────────────────────────────────── */
 const Contact = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({
-    name: "", email: "", phone: "", company: "",
-    jobTitle: "", employees: "", location: "", solution: "", message: "",
-  });
-  const [loading, setLoading] = useState(false);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [loading,  setLoading]  = useState(false);
+  const [openFaq,  setOpenFaq]  = useState<number | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || !form.phone.trim()) {
-      toast({ title: "Missing fields", description: "Please fill in name, email, and phone.", variant: "destructive" });
-      return;
-    }
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm<FormValues>({
+    resolver: zodResolver(schema),
+    mode: "onChange",
+  });
+
+  const messageVal = watch("message") ?? "";
+
+  const onSubmit = async (_data: FormValues) => {
     setLoading(true);
     await new Promise(r => setTimeout(r, 900));
     setLoading(false);
     toast({ title: "Message received!", description: "Our team will reach out within 2 business hours." });
-    setForm({ name: "", email: "", phone: "", company: "", jobTitle: "", employees: "", location: "", solution: "", message: "" });
+    reset();
   };
+
+  const fieldClass = (hasError: boolean) =>
+    `rounded-xl h-11 transition-all duration-200 focus:ring-1 focus:outline-none ${
+      hasError
+        ? "border-destructive focus:border-destructive focus:ring-destructive/30"
+        : "focus:border-primary focus:ring-primary/30"
+    }`;
 
   return (
     <MainLayout>
@@ -129,7 +160,7 @@ const Contact = () => {
         title="Contact Techtronix Solutions — IT Experts in New Delhi & PAN India"
         description="Contact Techtronix Solutions for IT infrastructure, cloud, and managed services. Based in New Delhi with PAN India support. We respond within 2 business hours."
         canonical="/contact"
-        ogImage="https://techtronixsolutions.com/og-contact.png"
+        ogImage={`${config.baseUrl}/og-contact.png`}
         keywords="contact Techtronix Solutions, IT company Delhi contact, managed IT services enquiry, IT support India, free IT consultation"
       />
 
@@ -198,7 +229,7 @@ const Contact = () => {
 
             {/* Form */}
             <AnimatedSection className="lg:col-span-3">
-              <form onSubmit={handleSubmit} className="rounded-2xl border border-border bg-card card-elevated p-8 space-y-5">
+              <form onSubmit={handleSubmit(onSubmit)} className="rounded-2xl border border-border bg-card card-elevated p-8 space-y-5" noValidate>
                 <div>
                   <h2 className="text-xl font-display font-bold text-foreground mb-1">Send us your requirement</h2>
                   <p className="text-sm text-muted-foreground">The more detail you share, the faster we can respond with the right solution.</p>
@@ -211,25 +242,25 @@ const Contact = () => {
                       Full Name <span className="text-primary">*</span>
                     </label>
                     <Input
-                      value={form.name}
-                      onChange={e => setForm({ ...form, name: e.target.value })}
+                      {...register("name")}
                       placeholder="Your full name"
-                      className="rounded-xl h-11 transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30"
+                      className={fieldClass(!!errors.name)}
                       maxLength={100}
                     />
+                    {errors.name && <p className="text-xs text-destructive mt-1">{errors.name.message}</p>}
                   </div>
                   <div>
                     <label className="text-xs font-semibold text-foreground mb-1.5 block uppercase tracking-wide">
                       Email <span className="text-primary">*</span>
                     </label>
                     <Input
+                      {...register("email")}
                       type="email"
-                      value={form.email}
-                      onChange={e => setForm({ ...form, email: e.target.value })}
                       placeholder="you@company.com"
-                      className="rounded-xl h-11 transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30"
+                      className={fieldClass(!!errors.email)}
                       maxLength={255}
                     />
+                    {errors.email && <p className="text-xs text-destructive mt-1">{errors.email.message}</p>}
                   </div>
                 </div>
 
@@ -240,21 +271,20 @@ const Contact = () => {
                       Phone Number <span className="text-primary">*</span>
                     </label>
                     <Input
+                      {...register("phone")}
                       type="tel"
-                      value={form.phone}
-                      onChange={e => setForm({ ...form, phone: e.target.value })}
                       placeholder="+91 XXXXX XXXXX"
-                      className="rounded-xl h-11 transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30"
+                      className={fieldClass(!!errors.phone)}
                       maxLength={20}
                     />
+                    {errors.phone && <p className="text-xs text-destructive mt-1">{errors.phone.message}</p>}
                   </div>
                   <div>
                     <label className="text-xs font-semibold text-foreground mb-1.5 block uppercase tracking-wide">Company Name</label>
                     <Input
-                      value={form.company}
-                      onChange={e => setForm({ ...form, company: e.target.value })}
+                      {...register("company")}
                       placeholder="Your organisation"
-                      className="rounded-xl h-11 transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30"
+                      className={fieldClass(!!errors.company)}
                       maxLength={100}
                     />
                   </div>
@@ -265,18 +295,16 @@ const Contact = () => {
                   <div>
                     <label className="text-xs font-semibold text-foreground mb-1.5 block uppercase tracking-wide">Job Title</label>
                     <Input
-                      value={form.jobTitle}
-                      onChange={e => setForm({ ...form, jobTitle: e.target.value })}
+                      {...register("jobTitle")}
                       placeholder="e.g. IT Manager, CTO"
-                      className="rounded-xl h-11 transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30"
+                      className={fieldClass(false)}
                       maxLength={100}
                     />
                   </div>
                   <div>
                     <label className="text-xs font-semibold text-foreground mb-1.5 block uppercase tracking-wide">Number of Employees</label>
                     <select
-                      value={form.employees}
-                      onChange={e => setForm({ ...form, employees: e.target.value })}
+                      {...register("employees")}
                       className="w-full rounded-xl h-11 border border-input bg-background px-3 text-sm transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 focus:outline-none"
                     >
                       <option value="">Select range</option>
@@ -290,18 +318,16 @@ const Contact = () => {
                   <div>
                     <label className="text-xs font-semibold text-foreground mb-1.5 block uppercase tracking-wide">Location</label>
                     <Input
-                      value={form.location}
-                      onChange={e => setForm({ ...form, location: e.target.value })}
+                      {...register("location")}
                       placeholder="City, State"
-                      className="rounded-xl h-11 transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30"
+                      className={fieldClass(false)}
                       maxLength={100}
                     />
                   </div>
                   <div>
                     <label className="text-xs font-semibold text-foreground mb-1.5 block uppercase tracking-wide">Required Solution</label>
                     <select
-                      value={form.solution}
-                      onChange={e => setForm({ ...form, solution: e.target.value })}
+                      {...register("solution")}
                       className="w-full rounded-xl h-11 border border-input bg-background px-3 text-sm transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 focus:outline-none"
                     >
                       <option value="">Select a service</option>
@@ -314,13 +340,12 @@ const Contact = () => {
                 <div>
                   <label className="text-xs font-semibold text-foreground mb-1.5 block uppercase tracking-wide">Project Details</label>
                   <Textarea
-                    value={form.message}
-                    onChange={e => setForm({ ...form, message: e.target.value })}
+                    {...register("message")}
                     placeholder="Briefly describe your current IT environment, the challenge you're facing, or the outcome you want to achieve..."
                     className="rounded-xl min-h-[130px] resize-none transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30"
                     maxLength={1000}
                   />
-                  <p className="text-xs text-muted-foreground mt-1.5 text-right">{form.message.length}/1000</p>
+                  <p className="text-xs text-muted-foreground mt-1.5 text-right">{messageVal.length}/1000</p>
                 </div>
 
                 <Button
@@ -409,8 +434,8 @@ const Contact = () => {
                     style={{ backgroundImage: "radial-gradient(circle, hsl(15 35% 23%) 1px, transparent 1px)", backgroundSize: "20px 20px" }}
                   />
                   <MapPin className="h-8 w-8 text-primary/50" />
-                  <p className="text-sm text-muted-foreground font-semibold">Uttam Nagar, New Delhi</p>
-                  <p className="text-xs text-muted-foreground text-center px-4">A-4, 1st Floor, Siddhatri Enclave, Jain Road – 110059</p>
+                  <p className="text-sm text-muted-foreground font-semibold">{config.address.locality}, New Delhi</p>
+                  <p className="text-xs text-muted-foreground text-center px-4">{config.address.street} – {config.address.postalCode}</p>
                 </div>
               </AnimatedSection>
             </div>
