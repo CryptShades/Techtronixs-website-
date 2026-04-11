@@ -14,9 +14,10 @@ const Footer = () => {
           {/* Brand column */}
           <div className="md:col-span-4">
             <Link to="/" className="flex items-center gap-2.5 group w-fit">
-              <div className="w-8 h-8 rounded-xl gradient-peach flex items-center justify-center">
+              <img src="/website-logo.png" alt="Techtronix Solutions" className="w-8 h-8 rounded-full shadow" />
+              {/* <div className="w-8 h-8 rounded-xl gradient-peach flex items-center justify-center">
                 <Server className="h-4 w-4 text-secondary-foreground" />
-              </div>
+              </div> */}
               <span className="font-display font-bold text-xl tracking-tight text-foreground">
                 {config.shortBrand}<span className="gradient-text"> Solutions</span>
               </span>
