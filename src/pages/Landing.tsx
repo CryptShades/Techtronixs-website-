@@ -416,20 +416,22 @@ const Landing = () => {
       <section className="py-14 border-y border-border/60 bg-muted/20 overflow-hidden">
         <div className="container mx-auto px-4 mb-7">
           <p className="text-center text-xs text-muted-foreground uppercase tracking-[0.2em] font-semibold">
-            Technology Partners
+            Technology Solutions
           </p>
         </div>
         <div className="relative">
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
           <div className="flex">
-            <div className="flex gap-14 items-center animate-marquee flex-shrink-0">
-              {[...techPartners, ...techPartners].map((p, i) => (
-                <span key={i} className={`text-lg md:text-xl font-display font-black whitespace-nowrap opacity-40 hover:opacity-70 transition-opacity ${p.style}`}>
-                  {p.name}
-                </span>
-              ))}
-            </div>
+            {[0, 1].map((set) => (
+              <div key={set} className="flex gap-14 items-center animate-marquee flex-shrink-0 pr-14" aria-hidden={set === 1}>
+                {[...techPartners, ...techPartners].map((p, i) => (
+                  <span key={i} className={`text-lg md:text-xl font-display font-black whitespace-nowrap opacity-40 hover:opacity-70 transition-opacity ${p.style}`}>
+                    {p.name}
+                  </span>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>
