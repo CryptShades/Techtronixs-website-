@@ -26,17 +26,16 @@ export default defineConfig({
     minify: "esbuild",
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (!id.includes("node_modules")) return;
-          if (id.includes("framer-motion")) return "vendor-animation";
-          if (id.includes("@radix-ui")) return "vendor-radix";
-          if (
-            id.includes("react/") ||
-            id.includes("react-dom/") ||
-            id.includes("react-router-dom")
-          )
-            return "vendor-react";
-          return "vendor";
+        manualChunks: {
+          "vendor-react":     ["react", "react-dom", "react-router-dom"],
+          "vendor-animation": ["framer-motion"],
+          "vendor-radix":     [
+            "@radix-ui/react-tooltip",
+            "@radix-ui/react-toast",
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-accordion",
+            "@radix-ui/react-select",
+          ],
         },
       },
     },
