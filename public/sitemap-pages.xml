@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Techtronix Solutions — Pages Sitemap
+  Content type : Core website pages
+  Submit to    : Google Search Console → sitemap-pages.xml
+-->
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+    http://www.sitemaps.org/schemas/sitemap/0.9
+    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <url>
+    <loc>https://techtronixsolutions.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en-in"    href="https://techtronixsolutions.com/"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://techtronixsolutions.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://techtronixsolutions.com/"/>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://techtronixsolutions.com/services</loc>
+    <xhtml:link rel="alternate" hreflang="en-in"    href="https://techtronixsolutions.com/services"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://techtronixsolutions.com/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://techtronixsolutions.com/services"/>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://techtronixsolutions.com/products</loc>
+    <xhtml:link rel="alternate" hreflang="en-in"    href="https://techtronixsolutions.com/products"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://techtronixsolutions.com/products"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://techtronixsolutions.com/products"/>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://techtronixsolutions.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en-in"    href="https://techtronixsolutions.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://techtronixsolutions.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://techtronixsolutions.com/contact"/>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://techtronixsolutions.com/about</loc>
+    <xhtml:link rel="alternate" hreflang="en-in"    href="https://techtronixsolutions.com/about"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://techtronixsolutions.com/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://techtronixsolutions.com/about"/>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+</urlset>

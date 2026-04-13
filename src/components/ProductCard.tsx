@@ -5,19 +5,22 @@ import { Link } from "react-router-dom";
 interface ProductCardProps {
   id: string;
   title: string;
+  brand: string;
   description: string;
+  image: string;
   tags: string[];
   category: string;
   link: string;
 }
 
 const categoryGradients: Record<string, string> = {
-  "AI Tools": "from-violet-400/20 to-primary/20",
-  "Cloud":    "from-sky-400/20 to-primary/20",
-  "SaaS":     "from-emerald-400/20 to-primary/20",
+  "Servers & Infrastructure": "from-sky-400/20    to-primary/20",
+  "Storage Solutions":        "from-violet-400/20 to-primary/20",
+  "Backup & Tape Solutions":  "from-amber-400/20  to-primary/20",
+  "Networking Devices":       "from-emerald-400/20 to-primary/20",
 };
 
-const ProductCard = ({ title, description, tags, category, link }: ProductCardProps) => {
+const ProductCard = ({ title, brand, description, image, tags, category, link }: ProductCardProps) => {
   const grad = categoryGradients[category] ?? "from-primary/20 to-accent/20";
 
   return (
@@ -30,8 +33,17 @@ const ProductCard = ({ title, description, tags, category, link }: ProductCardPr
 
       <div className="relative p-6 md:p-8 flex flex-col min-h-[220px]">
         <div className="flex items-start justify-between mb-5">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center border border-primary/20 shadow-sm">
-            <span className="text-lg font-bold text-secondary font-display">{title.charAt(0)}</span>
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center border border-primary/20 shadow-sm overflow-hidden">
+            {image ? (
+              <img
+                src={image}
+                alt={`${brand} logo`}
+                loading="lazy"
+                className="w-8 h-8 object-contain"
+              />
+            ) : (
+              <span className="text-lg font-bold text-secondary font-display">{title.charAt(0)}</span>
+            )}
           </div>
           <span className="text-xs font-medium px-2.5 py-1 rounded-lg bg-muted text-muted-foreground">{category}</span>
         </div>

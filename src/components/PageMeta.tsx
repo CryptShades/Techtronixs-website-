@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import config from "@/data/site.config.json";
 
 interface PageMetaProps {
   title: string;
@@ -8,10 +9,10 @@ interface PageMetaProps {
   keywords?: string;
 }
 
-const BASE_URL    = "https://techtronixsolutions.com";
-const DEFAULT_OG  = `${BASE_URL}/og-image.png`;
-const BRAND       = "Techtronix Solutions";
-const TWITTER     = "@TechtronixSol";
+const BASE_URL   = config.baseUrl;
+const DEFAULT_OG = config.defaultOgImage;
+const BRAND      = config.brand;
+const TWITTER    = config.twitter;
 
 const PageMeta = ({ title, description, canonical, ogImage = DEFAULT_OG, keywords }: PageMetaProps) => {
   const fullTitle    = title.includes("Techtronix") ? title : `${title} | ${BRAND}`;

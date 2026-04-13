@@ -1,6 +1,7 @@
 [
   {
     "id": "1",
+    "slug": "digital-workplace-solutions",
     "title": "Digital Workplace Solutions",
     "description": "We transform traditional work environments into agile, connected digital workplaces. Our end-to-end approach covers modern collaboration platforms, unified communications, device management, and end-user support. We assess your current environment, design a future-ready architecture, and execute a phased rollout that minimises disruption. With Microsoft 365, Google Workspace, and VDI solutions at the core, your teams gain secure access to tools and data from anywhere — driving productivity without compromising security. We also implement ITSM frameworks and helpdesk automation to reduce resolution times and improve the overall employee technology experience.",
     "icon": "Monitor",
@@ -16,10 +17,22 @@
       "Solution design & platform selection",
       "Phased rollout & user onboarding",
       "Ongoing support & optimisation"
+    ],
+    "showModal": true,
+    "serviceImages": [
+      "/services/digital-solutions/acer.png",
+      "/services/digital-solutions/apple.png",
+      "/services/digital-solutions/asus.png",
+      "/services/digital-solutions/dell.png",
+      "/services/digital-solutions/hp.png",
+      "/services/digital-solutions/lenovo.png",
+      "/services/digital-solutions/logitech.png",
+      "/services/digital-solutions/samsung.png"
     ]
   },
   {
     "id": "2",
+    "slug": "cloud-solutions",
     "title": "Cloud Solutions",
     "description": "From cloud migration to native application modernisation, we help organisations leverage the full potential of public, private, and hybrid cloud environments. Our cloud architects work across AWS, Microsoft Azure, and Google Cloud, designing infrastructure that is scalable, cost-efficient, and aligned to your business objectives. We begin every engagement with a cloud readiness assessment to identify workloads, dependencies, and risks — then execute a structured migration with zero business disruption. Post-migration, our FinOps practice ensures your cloud spend is continuously optimised with automated cost alerts, reserved instance planning, and rightsizing recommendations.",
     "icon": "Cloud",
@@ -35,10 +48,17 @@
       "Architecture design & migration planning",
       "Phased migration & validation testing",
       "Ongoing managed cloud operations"
+    ],
+    "showModal": true,
+    "serviceImages": [
+      "/services/cloud-solutions/microsoft.png",
+      "/services/cloud-solutions/google-cloud.png",
+      "/services/cloud-solutions/aws.png"
     ]
   },
   {
     "id": "3",
+    "slug": "cybersecurity",
     "title": "Cybersecurity",
     "description": "In an era of escalating cyber threats, a reactive security posture is no longer sufficient. Our cybersecurity practice builds proactive, layered defences across your entire IT landscape — from endpoints and networks to cloud workloads and applications. We conduct comprehensive vulnerability assessments and penetration tests, then implement zero-trust architecture frameworks, endpoint detection & response, and SIEM platforms. For organisations subject to regulatory requirements, we provide structured compliance support for ISO 27001, SOC 2, and India's DPDPA framework. Our SOC-as-a-Service offering delivers 24×7 threat monitoring and incident response with defined SLAs.",
     "icon": "Shield",
@@ -46,7 +66,7 @@
       "Vulnerability assessment & penetration testing",
       "Zero-trust network architecture design",
       "Endpoint Detection & Response (EDR)",
-      "SIEM & 24×7 SOC-as-a-Service",
+      "SIEM & 24x7 SOC-as-a-Service",
       "Compliance: ISO 27001, SOC 2, DPDPA"
     ],
     "process": [
@@ -54,10 +74,24 @@
       "Policy development & architecture design",
       "Control implementation & hardening",
       "Continuous monitoring & incident response"
+    ],
+    "showModal": true,
+    "serviceImages": [
+      "/services/cyber-security-solutions/barracuda.png",
+      "/services/cyber-security-solutions/checkpoint.png",
+      "/services/cyber-security-solutions/crowdstrike.png",
+      "/services/cyber-security-solutions/forcepoint.png",
+      "/services/cyber-security-solutions/fortinet.png",
+      "/services/cyber-security-solutions/paloalto.png",
+      "/services/cyber-security-solutions/sentinelone.png",
+      "/services/cyber-security-solutions/sophos.png",
+      "/services/cyber-security-solutions/trend-micro.png",
+      "/services/cyber-security-solutions/zscalar.png"
     ]
   },
   {
     "id": "4",
+    "slug": "hybrid-it-solutions",
     "title": "Hybrid IT Solutions",
     "description": "Most enterprises don't live entirely in the cloud — and they shouldn't have to. Our Hybrid IT practice helps organisations build cohesive infrastructure spanning on-premise data centres, private cloud, and public cloud environments. We architect seamless connectivity using SD-WAN, MPLS, and cloud interconnect services, ensuring consistent performance and security across every workload. Whether you're extending your data centre, adopting a cloud-first policy for new applications, or consolidating legacy infrastructure, we deliver an integrated hybrid model tailored to your specific compliance, performance, and cost requirements.",
     "icon": "Server",
@@ -73,10 +107,23 @@
       "Hybrid architecture blueprint",
       "Phased implementation & validation",
       "Ongoing management & capacity planning"
+    ],
+    "showModal": true,
+    "serviceImages": [
+      "/services/hybrid-it-solutions/aruba.png",
+      "/services/hybrid-it-solutions/cisco.png",
+      "/services/hybrid-it-solutions/dell-emc.png",
+      "/services/hybrid-it-solutions/extreme-networks.png",
+      "/services/hybrid-it-solutions/hewlett-packard-enterprise.png",
+      "/services/hybrid-it-solutions/netgear.png",
+      "/services/hybrid-it-solutions/poly.png",
+      "/services/hybrid-it-solutions/ruckus-networks.png",
+      "/services/hybrid-it-solutions/webex.png"
     ]
   },
   {
     "id": "5",
+    "slug": "data-center-services",
     "title": "Data Center Services",
     "description": "Your data centre is the heartbeat of your IT operations. We provide comprehensive data centre design, deployment, and management services that maximise uptime, efficiency, and security. Our team handles everything from physical rack-and-stack and structured cabling to server virtualisation, storage configuration, and full data centre migration. We specialise in hyper-converged infrastructure (HCI) deployments and work with leading OEMs including HPE, Dell EMC, Cisco, and NetApp. For organisations planning a data centre relocation or modernisation, we deliver detailed planning, risk management, and a tested cutover strategy to ensure zero data loss and minimal downtime.",
     "icon": "Database",
@@ -92,10 +139,23 @@
       "Design, OEM selection & procurement",
       "Implementation, testing & commissioning",
       "Managed operations & lifecycle support"
+    ],
+    "showModal": true,
+    "serviceImages": [
+      "/services/storage-solutions/acronis.png",
+      "/services/storage-solutions/commvault.png",
+      "/services/storage-solutions/druva.png",
+      "/services/storage-solutions/motadata.png",
+      "/services/storage-solutions/netapp.png",
+      "/services/storage-solutions/nutanix.png",
+      "/services/storage-solutions/rubrik.png",
+      "/services/storage-solutions/veeam.png",
+      "/services/storage-solutions/veritas.png"
     ]
   },
   {
     "id": "6",
+    "slug": "managed-it-services",
     "title": "Managed IT Services",
     "description": "Running IT in-house is expensive, complex, and distracts your teams from core business priorities. Our Managed IT Services model gives you a dedicated team of certified engineers handling monitoring, maintenance, and incident resolution — all backed by defined SLAs. We offer flexible engagement tiers: from a fully outsourced IT function to co-managed models that augment your existing team. Our service scope covers 24×7 IT service desk, network & security management, server & storage operations, application monitoring, and IT asset & vendor management. Every client receives a dedicated service manager and quarterly business reviews.",
     "icon": "Headphones",
@@ -111,6 +171,8 @@
       "Tool deployment & environment baseline",
       "Live operations & continuous monitoring",
       "Monthly reporting & quarterly reviews"
-    ]
+    ],
+    "showModal": false,
+    "serviceImages": []
   }
 ]

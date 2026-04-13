@@ -1,96 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Techtronix Solutions — XML Sitemap
-  Generated : 2026-04-07
-  Domain    : https://techtronixsolutions.com
-
-  Namespaces
-  ──────────
-  xmlns        : Sitemap Protocol 0.9  (required)
-  xmlns:xhtml  : W3C XHTML            (hreflang alternate links per page)
-  xmlns:xsi    : XML Schema Instance  (schema validation)
+  Techtronix Solutions — Sitemap Index
+  Submit this file to Google Search Console.
+  It references two separate sitemaps for pages and blog.
 -->
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="
-    http://www.sitemaps.org/schemas/sitemap/0.9
-    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- ═══════════════════════════════════════════════════════════
-       HOME  —  Priority 1.0
-       Primary landing page. Commercial intent, trust signals,
-       service overview, case studies, FAQ.
-       ═══════════════════════════════════════════════════════════ -->
-  <url>
-    <loc>https://techtronixsolutions.com/</loc>
-    <xhtml:link rel="alternate" hreflang="en-in"    href="https://techtronixsolutions.com/"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://techtronixsolutions.com/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://techtronixsolutions.com/"/>
-    <lastmod>2026-04-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <sitemap>
+    <loc>https://techtronixsolutions.com/sitemap-pages.xml</loc>
+    <lastmod>2026-04-09</lastmod>
+  </sitemap>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       SERVICES  —  Priority 0.90
-       Core commercial page. Cloud, cybersecurity, managed IT,
-       hybrid IT, data center, digital workplace. FAQPage schema.
-       ═══════════════════════════════════════════════════════════ -->
-  <url>
-    <loc>https://techtronixsolutions.com/services</loc>
-    <xhtml:link rel="alternate" hreflang="en-in"    href="https://techtronixsolutions.com/services"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://techtronixsolutions.com/services"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://techtronixsolutions.com/services"/>
-    <lastmod>2026-04-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
-  </url>
+  <sitemap>
+    <loc>https://techtronixsolutions.com/sitemap-blog.xml</loc>
+    <lastmod>2026-04-09</lastmod>
+  </sitemap>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       PRODUCTS  —  Priority 0.85
-       Enterprise hardware catalog. Servers, storage, networking,
-       backup. ItemList Product schema with OEM brands.
-       ═══════════════════════════════════════════════════════════ -->
-  <url>
-    <loc>https://techtronixsolutions.com/products</loc>
-    <xhtml:link rel="alternate" hreflang="en-in"    href="https://techtronixsolutions.com/products"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://techtronixsolutions.com/products"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://techtronixsolutions.com/products"/>
-    <lastmod>2026-04-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- ═══════════════════════════════════════════════════════════
-       CONTACT  —  Priority 0.80
-       High-conversion page. Lead form, office address, phone,
-       email, FAQ, LocalBusiness schema.
-       ═══════════════════════════════════════════════════════════ -->
-  <url>
-    <loc>https://techtronixsolutions.com/contact</loc>
-    <xhtml:link rel="alternate" hreflang="en-in"    href="https://techtronixsolutions.com/contact"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://techtronixsolutions.com/contact"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://techtronixsolutions.com/contact"/>
-    <lastmod>2026-04-07</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <!-- ═══════════════════════════════════════════════════════════
-       ABOUT  —  Priority 0.70
-       Brand / trust page. Mission, vision, team, timeline,
-       FAQ. Low update frequency.
-       ═══════════════════════════════════════════════════════════ -->
-  <url>
-    <loc>https://techtronixsolutions.com/about</loc>
-    <xhtml:link rel="alternate" hreflang="en-in"    href="https://techtronixsolutions.com/about"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://techtronixsolutions.com/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://techtronixsolutions.com/about"/>
-    <lastmod>2026-04-07</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.70</priority>
-  </url>
-
-</urlset>
+</sitemapindex>
