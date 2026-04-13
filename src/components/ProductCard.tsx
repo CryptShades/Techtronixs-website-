@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Server, HardDrive, ArchiveRestore, Network, type LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface ProductCardProps {
@@ -20,8 +20,19 @@ const categoryGradients: Record<string, string> = {
   "Networking Devices":       "from-emerald-400/20 to-primary/20",
 };
 
+const categoryIcons: Record<string, LucideIcon> = {
+  "Servers & Infrastructure": Server,
+  "Storage Solutions":        HardDrive,
+  "Backup & Tape Solutions":  ArchiveRestore,
+  "Networking Devices":       Network,
+};
+
 const ProductCard = ({ title, brand, description, image, tags, category, link }: ProductCardProps) => {
   const grad = categoryGradients[category] ?? "from-primary/20 to-accent/20";
+  const Icon = categoryIcons[category] ?? Server;
+
+  // Only render a real image if the path is not a generic placeholder
+  const hasRealImage = image && !image.includes("placeholder");
 
   return (
     <motion.div
@@ -34,7 +45,7 @@ const ProductCard = ({ title, brand, description, image, tags, category, link }:
       <div className="relative p-6 md:p-8 flex flex-col min-h-[220px]">
         <div className="flex items-start justify-between mb-5">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center border border-primary/20 shadow-sm overflow-hidden">
-            {image ? (
+            {hasRealImage ? (
               <img
                 src={image}
                 alt={`${brand} logo`}
@@ -42,7 +53,7 @@ const ProductCard = ({ title, brand, description, image, tags, category, link }:
                 className="w-8 h-8 object-contain"
               />
             ) : (
-              <span className="text-lg font-bold text-secondary font-display">{title.charAt(0)}</span>
+              <Icon className="w-5 h-5 text-secondary" strokeWidth={1.75} />
             )}
           </div>
           <span className="text-xs font-medium px-2.5 py-1 rounded-lg bg-muted text-muted-foreground">{category}</span>
