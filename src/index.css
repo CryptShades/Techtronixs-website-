@@ -277,4 +277,8 @@
     opacity: 1;
     transform: none;
   }
+
+  .animate-marquee {
+    animation: none;
+  }
 }
