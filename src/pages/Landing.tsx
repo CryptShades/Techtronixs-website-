@@ -17,6 +17,7 @@ import PageMeta from "@/components/PageMeta";
 import { useCountUp } from "@/hooks/useCountUp";
 import products from "@/data/products.json";
 import services from "@/data/services.json";
+import clients from "@/data/clients.json";
 
 /* ── Animation variants ───────────────────────────────── */
 const stagger = {
@@ -470,6 +471,51 @@ const Landing = () => {
               <Link to="/services" className="text-primary font-semibold hover:underline underline-offset-4">
                 Explore all our services →
               </Link>
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ── Our Clients ───────────────────────────────── */}
+      <section id="clients" className="py-20">
+        <div className="container mx-auto px-4">
+          <SectionHeading
+            title="Our Clients"
+            subtitle="Trusted by businesses across industries for delivering reliable IT infrastructure, enterprise solutions, and long-term technology partnerships."
+          />
+
+          <div className="relative">
+            <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+            <div className="flex overflow-hidden">
+              {[0, 1].map((set) => (
+                <div
+                  key={set}
+                  className="flex gap-6 items-center animate-marquee flex-shrink-0 pr-6 hover:[animation-play-state:paused]"
+                  aria-hidden={set === 1}
+                >
+                  {[...clients, ...clients].map((c, i) => (
+                    <div
+                      key={i}
+                      className="flex-shrink-0 w-40 h-24 md:w-48 md:h-28 flex items-center justify-center rounded-2xl border border-border bg-card card-elevated p-6 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/8 hover:-translate-y-0.5 transition-all duration-300"
+                    >
+                      <img
+                        src={c.logo}
+                        alt={`${c.name} logo`}
+                        loading="lazy"
+                        decoding="async"
+                        className="max-h-[60px] w-auto object-contain"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <AnimatedSection className="text-center mt-10">
+            <p className="text-sm text-muted-foreground">
+              Proud to partner with leading organisations across India.
             </p>
           </AnimatedSection>
         </div>
